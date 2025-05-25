@@ -1,0 +1,37 @@
+<odoo>
+    <record id="view_mo_ca_lam_viec_tree" model="ir.ui.view">
+        <field name="name">Danh sách ca làm việc</field>
+        <field name="model">mo.ca.lam.viec</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="ten_ca"/>
+                <field name="gio_bat_dau"/>
+                <field name="gio_ket_thuc"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_mo_ca_lam_viec_form" model="ir.ui.view">
+        <field name="name">Form ca làm việc</field>
+        <field name="model">mo.ca.lam.viec</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="ten_ca"/>
+                        <field name="gio_bat_dau"/>
+                        <field name="gio_ket_thuc"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_mo_ca_lam_viec" model="ir.actions.act_window">
+        <field name="name">Ca làm việc</field>
+        <field name="res_model">mo.ca.lam.viec</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_mo_ca_lam_viec" name="Ca làm việc" parent="menu_mo_nhan_su_root" action="action_mo_ca_lam_viec"/>
+</odoo>

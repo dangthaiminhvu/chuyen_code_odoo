@@ -1,0 +1,40 @@
+<odoo>
+    <record id="view_dang_ky_vi_tri_tree" model="ir.ui.view">
+        <field name="name">dang_ky_vi_tri.tree</field>
+        <field name="model">mo_nha_an_ca.dang_ky_vi_tri</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="employee_id"/>
+                <field name="vi_tri"/>
+                <field name="ngay"/>
+                <field name="ghi_chu"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_dang_ky_vi_tri_form" model="ir.ui.view">
+        <field name="name">dang_ky_vi_tri.form</field>
+        <field name="model">mo_nha_an_ca.dang_ky_vi_tri</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="employee_id"/>
+                        <field name="vi_tri"/>
+                        <field name="ngay"/>
+                        <field name="ghi_chu"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_dang_ky_vi_tri" model="ir.actions.act_window">
+        <field name="name">Đăng Ký Vị Trí</field>
+        <field name="res_model">mo_nha_an_ca.dang_ky_vi_tri</field>
+        <field name="view_mode">tree,form</field>
+        <field name="type">ir.actions.act_window</field>
+    </record>
+
+    <menuitem id="menu_dang_ky_vi_tri" name="Đăng ký vị trí ăn" parent="menu_nha_an_ca_root" action="action_dang_ky_vi_tri"/>
+</odoo>

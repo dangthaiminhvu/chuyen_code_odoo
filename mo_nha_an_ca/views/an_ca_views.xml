@@ -1,0 +1,15 @@
+<odoo>
+    <record id="view_an_ca_tree" model="ir.ui.view">
+        <field name="name">an_ca.tree</field>
+        <field name="model">mo_nha_an_ca.an_ca</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="employee_id"/>
+                <field name="ngay"/>
+                <field name="ca"/>
+                <field name="vi_tri"/>
+                <field name="trang_thai"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

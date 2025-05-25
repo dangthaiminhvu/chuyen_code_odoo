@@ -1,0 +1,33 @@
+<odoo>
+	<record id="people6_view_form" model="ir.ui.view">
+		<field name="name">people6.form</field>
+		<field name="model">people6</field>
+		<field name="arch" type="xml">
+			<form string="People6">
+				<header>
+					<button name="action_check_compute" string='Check' id="action_check_btn" type="object" class="oe_highlight" />
+				</header>
+				<sheet>
+					<group>
+						<field name="name" />
+						<group>
+							<field name="yob" />
+							<field name="cy" />
+						</group>
+						<group>
+							<field name="age" />
+						</group>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="people6_action" model="ir.actions.act_window">
+		<field name="name">People6</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">people6</field>
+	</record>
+
+	<menuitem id="menu_people6" name="People 6" parent="menu_field" action='people6_action' />
+</odoo>

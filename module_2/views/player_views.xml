@@ -1,0 +1,88 @@
+<odoo>
+  <!-- Tree view (danh sách) -->
+  <record id="player_view_tree" model="ir.ui.view">
+    <field name="name">player.tree</field>
+    <field name="model">player</field>
+    <field name="arch" type="xml">
+      <tree string="Players">
+        <field name="name"/>
+        <field name="country"/>
+        <field name="gender"/>
+        <field name="position"/>
+        <field name="height"/>
+        <field name="weight"/>
+      </tree>
+    </field>
+  </record>
+
+  <!-- Form view (biểu mẫu) -->
+  <record id="player_view_form" model="ir.ui.view">
+    <field name="name">player.form</field>
+    <field name="model">player</field>
+    <field name="arch" type="xml">
+      <form string="Player">
+        <sheet>
+            <field name="image" widget="image" class="oe_avatar" />
+            <div class="oe_title">
+                <label for="name"></label>
+                <h1>
+                    <field name="name"></field>
+                </h1>
+            </div>
+                <group>
+                    <group>
+                        <field name="country"/>
+                        <field name="gender"/>
+                        <field name="day_of_birth"/>
+                    </group>
+                    <group>
+                        <field name="position"/>
+                        <field name="height"/>
+                        <field name="weight"/>
+                    </group>
+                </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <!-- Action mở tree & form view -->
+  <record id="player_action" model="ir.actions.act_window">
+    <field name="name">Players</field>
+    <field name="res_model">player</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <!-- Menu cha -->
+  <menuitem id="player_menu" name="Players" groups="base.group_user"/>
+
+  <!-- Menu con -->
+  <menuitem 
+    id="player_menu_1" 
+    name="Players" 
+    parent="player_menu" 
+    action="player_action" 
+    groups="base.group_user"/>
+
+    <template id="listing">
+      <t t-foreach="objects" t-as="obj">
+          <div>
+              <a t-attf-href="/module_2/module_2/objects/{{ obj.id }}">
+                  <t t-esc="obj.name"/>
+              </a>
+          </div>
+      </t>
+  </template>
+  
+  <template id="object">
+      <div>
+          <h1>Chi tiết đối tượng</h1>
+          <p>ID: <t t-esc="object.id"/></p>
+          <p>Tên: <t t-esc="object.name"/></p>
+          <p>Đến từ: <t t-esc="object.country"/></p>
+          <p>Giới tính: <t t-esc="object.gender"/></p>
+          <p>Chiều cao: <t t-esc="object.height"/></p>
+          <p>Cân nặng: <t t-esc="object.weight"/></p>
+      </div>
+  </template>  
+</odoo>

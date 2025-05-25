@@ -1,0 +1,67 @@
+<odoo>
+
+    <!-- View Tree for Dinh Muc An -->
+    <record id="view_dinh_muc_an_tree" model="ir.ui.view">
+        <field name="name">mo_nha_an_ca.dinh_muc_an.tree</field>
+        <field name="model">mo_nha_an_ca.dinh_muc_an</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="nhom"/>
+                <field name="vi_tri"/>
+                <field name="so_suat"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action for Dinh Muc An -->
+    <record id="action_dinh_muc_an" model="ir.actions.act_window">
+        <field name="name">Định Mức Ăn</field>
+        <field name="res_model">mo_nha_an_ca.dinh_muc_an</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Action for Dang Ky Vi Tri -->
+    <record id="action_dang_ky_vi_tri" model="ir.actions.act_window">
+        <field name="name">Đăng Ký Vị Trí Ăn</field>
+        <field name="res_model">mo_nha_an_ca.dang_ky_vi_tri</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Action for Dang Ky Suat An -->
+    <record id="action_dang_ky_suat_an" model="ir.actions.act_window">
+        <field name="name">Đăng Ký Suất Ăn</field>
+        <field name="res_model">mo_nha_an_ca.dang_ky_suat_an</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Action for Bao An -->
+    <record id="action_bao_an" model="ir.actions.act_window">
+        <field name="name">Báo Ăn</field>
+        <field name="res_model">mo_nha_an_ca.bao_an</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Action for Cham An -->
+    <record id="action_cham_an" model="ir.actions.act_window">
+        <field name="name">Chấm Ăn</field>
+        <field name="res_model">mo_nha_an_ca.cham_an</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Action for Phieu Quet The -->
+    <record id="action_phieu_quet_the" model="ir.actions.act_window">
+        <field name="name">Quét Thẻ</field>
+        <field name="res_model">mo_nha_an_ca.phieu_quet_the</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_nha_an_ca_root" name="Nhà ăn ca" sequence="10" web_icon="mo_nha_an_ca,static/description/icon.png"/>
+    <menuitem id="menu_dinh_muc_an" name="Định mức ăn" parent="menu_nha_an_ca_root" action="action_dinh_muc_an"/>
+    <menuitem id="menu_dang_ky_vi_tri" name="Đăng ký vị trí ăn" parent="menu_nha_an_ca_root" action="action_dang_ky_vi_tri"/>
+    <menuitem id="menu_dang_ky_suat_an" name="Đăng ký suất ăn" parent="menu_nha_an_ca_root" action="action_dang_ky_suat_an"/>
+    <menuitem id="menu_bao_an" name="Báo ăn" parent="menu_nha_an_ca_root" action="action_bao_an"/>
+    <menuitem id="menu_cham_an" name="Chấm ăn" parent="menu_nha_an_ca_root" action="action_cham_an"/>
+    <menuitem id="menu_phieu_quet_the" name="Quẹt thẻ" parent="menu_nha_an_ca_root" action="action_phieu_quet_the"/>
+
+</odoo>

@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_dog_user,dog.muacho,model_dog,module_model.group_nguoi_mua_cho,1,0,0,0
+access_dog_manager,dog.quanlycho,model_dog,module_model.group_nguoi_quan_ly_cho,1,1,1,1
+access_transient_model_user,access.transient.model,model_transient_model,base.group_user,1,0,1,0
