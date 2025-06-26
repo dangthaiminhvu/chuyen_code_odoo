@@ -1,3 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_mo_ca_lam_viec,mo.ca.lam.viec,model_mo_ca_lam_viec,base.group_user,1,0,0,0
-access_mo_thiet_bi,mo.thiet.bi,model_mo_thiet_bi,base.group_user,1,0,0,0

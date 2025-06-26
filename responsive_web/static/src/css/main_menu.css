@@ -1,4 +1,3 @@
-
 .fullscreen-menu.show {
     position: fixed !important;
     min-width: 100vw;
@@ -10,16 +9,15 @@
 }
 
 .nav-container {
-    float: left;
-    position: relative;
+    position: fixed;
     width: 100vw;
     height: 100vh;
-    background: transparent;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: flex-start;
-    margin-top: -20px;
+    background: transparent;
     overflow-x: auto;
+    z-index: 2;
 }
 
 .search-results {
@@ -68,8 +66,8 @@
     height: 28px;
     padding: 0px;
     border: 0px;
-    border-bottom: 1px solid gray(400);
-    border-color: gray(700);
+    border-bottom: 1px solid #ccc;
+    border-color: #555;
     box-shadow: none;
     font-weight: 500;
 }
@@ -97,10 +95,9 @@
 .app-menu {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-    gap: 20px;
-    width: 45%;
-    margin: auto;
-    margin-top: 100px;
+    max-width: 800px;
+    margin: 100px auto 0 auto;
+    gap: 24px;
 }
 
 .o_main_navbar .dropdown-menu.show {
@@ -138,38 +135,31 @@
     margin-left: 10px;
 }
 
+/* ✅ AppBar phía trên cùng màu xanh lá cây */
+.o_main_navbar {
+    background-color: #014911cc !important;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999 !important;
+}
+
+/* ✅ Cho chữ và icon trong AppBar có màu trắng */
+.o_main_navbar,
+.o_main_navbar a,
+.o_main_navbar .dropdown-toggle,
+.o_main_navbar .fa,
+.o_main_navbar span {
+    color: white !important;
+}
+
 .input-group-prepend {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.search-input {
-    margin: auto;
-}
-
-.dropdown-menu {
-    border: none !important;
-}
-
-.o_main_navbar .dropdown-menu.show {
-    padding-top: 2%;
-    min-width: 100vw;
-    min-height: 100vh;
-    margin-right: 0;
-    top: -36px;
-    position: absolute;
-    right: 0;
-}
-
-.nav-container {
-    position: fixed;
-    min-width: 101vw !important;
-    height: 100vh;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
 }
 
 .search-input {
@@ -215,11 +205,9 @@
 }
 
 .img-wrap {
-    background-color: white;
-    padding: 10px 10px;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    box-shadow: rgba(149, 157, 165, 0.4) 0px 8px 24px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 16px;
 }
 
 .img-wrap:hover {
@@ -234,4 +222,155 @@
 .dropdown-item:focus {
     color: #212529;
     background-color: transparent;
+}
+
+.custom-home-background {
+    position: relative;
+    min-height: 100vh;
+    background-color: #007a1b !important;
+    z-index: 0;
+    overflow: hidden;
+} */
+
+.custom-home-background::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('/responsive_web/static/src/img/background-light.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.15;
+    z-index: 1;
+}
+
+.custom-home-background::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('/responsive_web/static/src/img/home-menu-bg-overlay.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.7;
+    z-index: 2;
+}
+
+.oh_dashboards {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+}
+
+/* ✅ Màu chữ trắng cho các mục trong AppBar */
+.o_main_navbar .dropdown-item.o_nav_entry {
+    color: white !important;
+    background-color: transparent !important;
+}
+
+/* ✅ Khi hover cũng không có nền tím */
+.o_main_navbar .dropdown-item.o_nav_entry:hover,
+.o_main_navbar .dropdown-item.o_nav_entry:focus,
+.o_main_navbar .dropdown-item.o_nav_entry:active {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: white !important;
+}
+
+/* ✅ Nút trên AppBar có class btn-primary sẽ không tím nữa */
+.o_main_navbar .btn.btn-primary {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: white !important;
+    border: none !important;
+}
+
+/* ✅ Khi hover vào nút, sáng hơn nhẹ */
+.o_main_navbar .btn.btn-primary:hover {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    color: white !important;
+}
+
+.o_main_navbar .btn.btn-secondary {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: white !important;
+    border: none !important;
+}
+
+/* Tạm ẩn toàn bộ các điều hướng bên trái */
+.o_navbar_modules {
+    display: none;
+}
+
+/* Khi đang trong module thì hiện lại */
+body.o_web_client > .o_action_manager:not(:empty) ~ .o_main_navbar .o_navbar_modules {
+    display: flex !important;
+}
+
+/* Nút '>' quay lại module gần nhất */
+.o_navbar_back_button {
+    display: none;
+    align-items: center;
+    margin-left: 16px;
+    cursor: pointer;
+    font-size: 20px;
+    color: white;
+}
+
+/* Khi đang ở trạng thái ngoài module nhưng đã có module trước đó */
+body.module-exited .o_navbar_back_button {
+    display: flex !important;
+}
+
+/* Khi đang ở trong module thì hiện điều hướng */
+body.module-entered .o_navbar_modules {
+    display: flex !important;
+}
+
+/* Ngược lại thì ẩn hết (kể cả điều hướng lẫn back button) */
+body:not(.module-entered):not(.module-exited) .o_navbar_modules {
+    display: none !important;
+}
+
+/* AppBar luôn nổi trên cùng */
+.o_main_navbar {
+    z-index: 9999 !important;
+
+    top: 0;
+    width: 100%;
+}
+
+/* Nút ">" back */
+.custom-back-wrapper {
+    position: absolute;
+    top: 12px;
+    left: 16px;
+    z-index: 99999;
+}
+.custom_back_button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Ẩn mặc định các điều hướng */
+.o_navbar_modules {
+    display: none;
+}
+
+.dashboard-section {
+    margin: 2rem 0;
+    padding: 1rem;
+}
+
+.dashboard-title {
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    background-color: #003c75;
+    padding: 0.5rem 1.2rem;
+    border-radius: 8px;
+    display: inline-block;
 }

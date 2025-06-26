@@ -1,0 +1,55 @@
+<odoo>
+  <record id="view_form_hr_job_custom" model="ir.ui.view">
+    <field name="name">hr.job.custom.form</field>
+    <field name="model">hr.job.custom</field>
+    <field name="arch" type="xml">
+      <form string="Chức vụ">
+        <sheet>
+          <group>
+            <group>
+              <field name="name"/>
+              <field name="code"/>
+              <field name="working_hours"/>
+              <field name="kpi_salary"/>
+            </group>
+            <group>
+              <field name="allowance_travel"/>
+              <field name="allowance_phone"/>
+              <field name="allowance_responsibility"/>
+              <field name="allowance_meal"/>
+              <field name="allowance_other"/>
+            </group>
+          </group>
+          <notebook>
+            <page string="Tuyển dụng">
+              <group>
+                <field name="department_id"/>
+                <field name="location"/>
+                <field name="job_type"/>
+                <field name="company_id"/>
+                <field name="objective"/>
+                <field name="recruiter_id"/>
+                <field name="interviewer_id"/>
+              </group>
+            </page>
+            <page string="Mô tả công việc">
+              <field name="description" placeholder="Nhập mô tả công việc..." widget="slash_text"/>
+            </page>
+            <page string="Chế độ &amp; phúc lợi">
+              <field name="benefits" placeholder="Nhập chế độ và phúc lợi..." widget="slash_text"/>
+            </page>
+          </notebook>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="action_hr_job_custom" model="ir.actions.act_window">
+    <field name="name">Chức vụ</field>
+    <field name="res_model">hr.job.custom</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <menuitem id="menu_hr_custom_root" name="Thông tin công ty" sequence="10"/>
+  <menuitem id="menu_hr_job_custom" name="Chức vụ" parent="menu_hr_custom_root" action="action_hr_job_custom"/>
+</odoo>

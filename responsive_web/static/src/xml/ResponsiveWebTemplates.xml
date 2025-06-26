@@ -1,29 +1,29 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!-- This template handles the layout for the WebResponsive component. -->
-<templates id="responsive_web" xml:space="preserve">
-    <t t-name="responsive_web.WebResponsiveTmp">
+<t t-name="responsive_web.WebResponsiveTmp">
+    <div class="custom-home-background">
         <div class="oh_dashboards" t-ref="root">
             <div class="dashboard_main o_web_responsive">
+
                 <t t-if="state.showModal">
                     <div class="nav-container">
                         <t t-call="responsive_web.SearchResult"/>
                     </div>
-            </t>
+                </t>
                 <t t-else="">
-                     <div class="nav-container">
+                    <div class="nav-container">
                         <div class="app-menu">
-                            <t t-foreach="state.menus" t-as="app"
-                               t-key="app_index">
+                            <t t-foreach="state.menus" t-as="app" t-key="app_index">
                                 <a role="menuitem"
                                    t-attf-href="#menu_id={{app.id}}"
                                    class="dropdown-item o_app mt0"
                                    t-att-data-menu-id="app.menuID"
                                    t-att-data-menu-xmlid="app.xmlID"
                                    t-att-data-action-id="app.actionID">
-                                    <span class="img-wrap"><img t-if="app.webIconData"
-                                             t-att-title="app.name"
-                                             style="width: 50px !important;height: 50px !important;margin: 5px 5px 5px 5px;"
-                                             t-attf-src="data:image/png;base64, {{app.webIconData}}"/></span>
+                                    <span class="img-wrap">
+                                        <img t-if="app.webIconData"
+                                            t-att-title="app.name"
+                                            style="width:48px;height:48px;object-fit:contain;"
+                                            t-attf-src="data:image/png;base64, {{app.webIconData}}"/>
+                                    </span>
                                     <b class="a_app_menu_title"><t t-esc="app.name"/></b>
                                 </a>
                             </t>
@@ -32,5 +32,5 @@
                 </t>
             </div>
         </div>
-    </t>
-</templates>
+    </div>
+</t>
