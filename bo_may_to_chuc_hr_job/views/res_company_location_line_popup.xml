@@ -1,0 +1,28 @@
+<odoo>
+    <record id="view_form_res_company_location_line_popup" model="ir.ui.view">
+        <field name="name">res.company.location.line.popup.form</field>
+        <field name="model">res.company.location.line</field>
+        <field name="priority" eval="20"/>
+        <field name="arch" type="xml">
+            <form string="Tạo Địa điểm">
+                <sheet>
+                    <group colspan="2">
+                        <group >
+                            <field name="location_name"/>
+                            <field name="location_is_headquarter"/>
+                            <field name="location_phone"/>
+                            <field name="location_email"/>
+                        </group>
+                        <group string="ĐỊA CHỈ">
+                            <field name="location_country_id"/>
+                            <field name="location_state_id" domain="[('country_id','=', location_country_id)]"/>
+                            <field name="location_district_id" domain="[('state_id','=', location_state_id)]"/>
+                            <field name="location_street_id" domain="[('district_id','=', location_district_id)]"/>
+                            <field name="location_address"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

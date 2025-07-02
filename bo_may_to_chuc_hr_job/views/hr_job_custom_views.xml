@@ -1,55 +1,157 @@
 <odoo>
-  <record id="view_form_hr_job_custom" model="ir.ui.view">
-    <field name="name">hr.job.custom.form</field>
-    <field name="model">hr.job.custom</field>
-    <field name="arch" type="xml">
-      <form string="Chức vụ">
-        <sheet>
-          <group>
-            <group>
-              <field name="name"/>
-              <field name="code"/>
-              <field name="working_hours"/>
-              <field name="kpi_salary"/>
-            </group>
-            <group>
-              <field name="allowance_travel"/>
-              <field name="allowance_phone"/>
-              <field name="allowance_responsibility"/>
-              <field name="allowance_meal"/>
-              <field name="allowance_other"/>
-            </group>
-          </group>
-          <notebook>
-            <page string="Tuyển dụng">
-              <group>
-                <field name="department_id"/>
-                <field name="location"/>
-                <field name="job_type"/>
-                <field name="company_id"/>
-                <field name="objective"/>
-                <field name="recruiter_id"/>
-                <field name="interviewer_id"/>
-              </group>
-            </page>
-            <page string="Mô tả công việc">
-              <field name="description" placeholder="Nhập mô tả công việc..." widget="slash_text"/>
-            </page>
-            <page string="Chế độ &amp; phúc lợi">
-              <field name="benefits" placeholder="Nhập chế độ và phúc lợi..." widget="slash_text"/>
-            </page>
-          </notebook>
-        </sheet>
-      </form>
-    </field>
-  </record>
+    <data>
+        <record id="view_tree_hr_job_custom" model="ir.ui.view">
+            <field name="name">hr.job.custom.tree</field>
+            <field name="model">hr.job.custom</field>
+            <field name="arch" type="xml">
+                <tree string="DANH SÁCH CHỨC VỤ">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="department_id"/>
+                    <field name="employee_current"/>
+                    <field name="objective"/>
+                    <field name="employee_target"/>
+                    <field name="employee_hired"/>
+                </tree>
+            </field>
+        </record>
 
-  <record id="action_hr_job_custom" model="ir.actions.act_window">
-    <field name="name">Chức vụ</field>
-    <field name="res_model">hr.job.custom</field>
-    <field name="view_mode">tree,form</field>
-  </record>
+        <record id="view_form_hr_job_custom" model="ir.ui.view">
+            <field name="name">hr.job.custom.form</field>
+            <field name="model">hr.job.custom</field>
+            <field name="arch" type="xml">
+                <form string="Chức vụ">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="code"/>
+                                <field name="working_hours"/>
+                                <field name="kpi_salary"/>
+                            </group>
+                            <group>
+                                <field name="allowance_travel"/>
+                                <field name="allowance_phone"/>
+                                <field name="allowance_responsibility"/>
+                                <field name="allowance_meal"/>
+                                <field name="allowance_other"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Tuyển dụng">
+                                <group colspan="2">
+                                    <group>
+                                        <field name="department_id"/>
+                                        <field name="location"/>
+                                        <field name="job_type"/>
+                                        <field name="company_id"/>
+                                    </group>
+                                    <group>
+                                        <field name="objective"/>
+                                        <field name="recruiter_id"/>
+                                        <field name="interviewer_id"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <field name="employee_current" readonly="1"/>
+                                    <field name="employee_target" readonly="1"/>
+                                    <field name="employee_hired" readonly="1"/>
+                                    <field name="requirements" widget="slash_text"/>
+                                </group>
+                            </page>
+                            <page string="Mô tả công việc">
+                                <group>
+                                    <field name="description" widget="slash_text" nolabel="1"/>
+                                </group>
+                            </page>
 
-  <menuitem id="menu_hr_custom_root" name="Thông tin công ty" sequence="10"/>
-  <menuitem id="menu_hr_job_custom" name="Chức vụ" parent="menu_hr_custom_root" action="action_hr_job_custom"/>
+                            <page string="Chế độ &amp; phúc lợi">
+                                <group>
+                                    <field name="benefits" widget="slash_text" nolabel="1"/>
+                                </group>
+                            </page>
+
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--  Action cho Chức vụ  -->
+        <record id="action_hr_job_custom" model="ir.actions.act_window">
+            <field name="name">Chức vụ</field>
+            <field name="res_model">hr.job.custom</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!--  Action cho Công ty  -->
+        <record id="action_res_company_custom_view" model="ir.actions.act_window">
+            <field name="name">Công ty mở rộng</field>
+            <field name="res_model">res.company.custom</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!--  Action cho Phòng ban  -->
+        <record id="action_department_view" model="ir.actions.act_window">
+            <field name="name">Phòng ban</field>
+            <field name="res_model">hr.department.custom</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Action mở danh sách nhân viên -->
+        <record id="action_open_hr_employees_list" model="ir.actions.act_window">
+            <field name="name">Employees</field>
+            <field name="res_model">hr.employee</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Action mở danh sách vai trò (custom departments) -->
+        <record id="action_open_custom_roles_view" model="ir.actions.act_window">
+            <field name="name">Roles</field>
+            <field name="res_model">hr.department.custom</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="action_hr_contract_custom" model="ir.actions.act_window">
+            <field name="name">Hợp đồng</field>
+            <field name="res_model">hr.contract</field>
+            <field name="view_mode">tree,form,kanban,activity</field>
+            <field name="search_view_id" ref="hr_contract.hr_contract_view_search"/>
+        </record>
+
+        <!-- Action mở form & tree phụ lục hợp đồng -->
+        <record id="action_x_contract_appendix" model="ir.actions.act_window">
+            <field name="name">Phụ lục hợp đồng</field>
+            <field name="res_model">x.contract.appendix</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Tạo phụ lục hợp đồng mới
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_org_root" name="Bộ máy tổ chức" sequence="10" web_icon="bo_may_to_chuc_hr_job,static/description/icon.png"/>
+
+        <!--  Menu thông tin công ty  -->
+        <menuitem id="menu_org_info" name="Thông tin công ty" parent="menu_org_root" sequence="10"/>
+        <!--  Các lựa chọn dưới thông tin công ty (dropdown)  -->
+        <menuitem id="menu_org_company" name="Công ty" parent="menu_org_info" action="action_res_company_custom_view"/>
+        <menuitem id="menu_org_job" name="Chức vụ" parent="menu_org_info" action="action_hr_job_custom"/>
+        <menuitem id="menu_org_department" name="Phòng ban" parent="menu_org_info" action="action_department_view"/>
+
+        <!--  Các lựa chọn dưới Nhân viên & Vai trò (dropdown)  -->
+        <menuitem id="menu_org_info_2" name="Nhân viên &amp; Vai trò" parent="menu_org_root" sequence="10"/>
+        <!--  Các lựa chọn dưới Nhân viên & Vai trò (dropdown)  -->
+        <menuitem id="menu_org_employees" name="Nhân viên" parent="menu_org_info_2" action="action_open_hr_employees_list" sequence="10"/>
+        <menuitem id="menu_org_roles" name="Vai trò" parent="menu_org_info_2" action="action_open_custom_roles_view" sequence="20"/>
+
+        <!-- Menu Hợp đồng -->
+        <menuitem id="menu_hr_contract_custom_root" name="Hợp đồng" parent="menu_org_root" sequence="30"/>
+        <!-- Submenu: Hợp đồng -->
+        <menuitem id="menu_hr_contract_custom_main" name="Hợp đồng" parent="menu_hr_contract_custom_root" action="action_hr_contract_custom" sequence="10"/>
+        <!-- Submenu: Phụ lục hợp đồng -->
+        <menuitem id="menu_x_contract_appendix" name="Phụ lục hợp đồng" parent="menu_hr_contract_custom_root" action="action_x_contract_appendix" sequence="20"/>
+
+    </data>
 </odoo>

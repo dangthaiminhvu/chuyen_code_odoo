@@ -1,0 +1,62 @@
+<odoo>
+    <data>
+        <!-- Tree View -->
+        <record id="view_hr_department_custom_tree" model="ir.ui.view">
+            <field name="name">hr.department.custom.tree</field>
+            <field name="model">hr.department.custom</field>
+            <field name="arch" type="xml">
+                <tree string="Danh sách phòng ban">
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="company_id"/>
+                    <field name="manager_id"/>
+                    <field name="employee_count" width="100" readonly="1"/>
+                    <field name="parent_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form View -->
+        <record id="view_hr_department_custom_form" model="ir.ui.view">
+            <field name="name">hr.department.custom.form</field>
+            <field name="model">hr.department.custom</field>
+            <field name="arch" type="xml">
+                <form string="Phòng ban công ty">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="code"/>
+                                <field name="name"/>
+                                <field name="company_id"/>
+                            </group>
+                            <group>
+                                <field name="manager_id"/>
+                                <field name="parent_id"/>
+                            </group>
+                        </group>
+
+                        <notebook>
+                            <page string="Xếp hạng chức vụ">
+                                <field name="line_ids" nolabel="1" widget="one2many_list" colspan="2">
+                                    <tree editable="bottom">
+                                        <field name="job_id" width="150"/>
+                                        <field name="is_manager" width="100"/>
+                                        <field name="employee_id" width="200" attrs="{'readonly': [('is_manager', '=', False)]}"/>
+                                        <field name="ranking" width="100"/>
+                                        <field name="active" width="100"/>
+                                    </tree>
+                                </field>
+                            </page>
+
+                            <page string="KPI">
+                                <group>
+                                    <field name="kpi_ratio"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

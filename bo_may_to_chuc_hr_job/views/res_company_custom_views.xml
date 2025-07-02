@@ -1,0 +1,160 @@
+<odoo>
+    <!-- Tree View -->
+    <record id="view_tree_res_company_custom" model="ir.ui.view">
+        <field name="name">res.company.custom.tree</field>
+        <field name="model">res.company.custom</field>
+        <field name="arch" type="xml">
+            <tree string="Danh sách công ty">
+                <field name="name"/>
+                <field name="short_name"/>
+                <field name="identifier_code"/>
+                <field name="phone" string="SĐT"/>
+                <field name="email"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_form_res_company_custom" model="ir.ui.view">
+        <field name="name">res.company.custom.form</field>
+        <field name="model">res.company.custom</field>
+        <field name="arch" type="xml">
+            <form string="Thông tin công ty">
+                <sheet>
+                    <!-- Thông tin công ty & người đại diện -->
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="short_name"/>
+                            <field name="identifier_type"/>
+                            <field name="website"/>
+
+                        </group>
+                        <group>
+                            <field name="phone"/>
+                            <field name="email"/>
+                            <field name="identifier_code"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="logo" widget="image"/>
+                        </group>
+                        <group>
+                            <field name="favicon" widget="image"/>
+                        </group>
+                    </group>
+
+                    <!-- Văn phòng giao dịch & Trụ sở chính -->
+                    <group>
+                        <group string="Văn phòng giao dịch">
+                            <group>
+                                <field name="trading_office_country_id" string="Quốc gia"/>
+                                <field name="trading_office_state_id" string="Tỉnh/Thành phố" domain="[('country_id', '=', trading_office_country_id)]"/>
+                                <field name="trading_office_district_id" string="Quận/Huyện" domain="[('state_id', '=', trading_office_state_id)]"/>
+                            </group>
+                            <group>
+                                <field name="trading_office_street_id" string="Đường" domain="[('district_id', '=', trading_office_district_id)]"/>
+                                <field name="trading_office_address" string="Địa chỉ chi tiết"/>
+                            </group>
+                        </group>
+
+                        <group string="Trụ sở chính">
+                            <group>
+                                <field name="headquarters_country_id" string="Quốc gia"/>
+                                <field name="headquarters_state_id" string="Tỉnh/Thành phố" domain="[('country_id','=', headquarters_country_id)]"/>
+                                <field name="headquarters_district_id" string="Quận/Huyện" domain="[('state_id','=', headquarters_state_id)]"/>
+                            </group>
+                            <group>
+                                <field name="headquarters_street_id" string="Đường" domain="[('district_id','=', headquarters_district_id)]"/>
+                                <field name="headquarters_address" string="Địa chỉ chi tiết"/>
+                            </group>
+                        </group>
+                    </group>
+
+                    <group string="THÔNG TIN NGƯỜI ĐẠI DIỆN">
+                        <field name="representative_name"/>
+                        <field name="representative_position"/>
+                        <field name="representative_email"/>
+                        <field name="representative_phone"/>
+                    </group>
+
+                    <!-- Notebook -->
+                    <notebook>
+                        <!-- Tab Địa điểm -->
+                        <page string="ĐỊA ĐIỂM CÔNG TY">
+                            <field name="location_line_ids" context="{'default_company_id': active_id}" mode="tree,form">
+                                <tree>
+                                    <field name="location_name" string="Tên"/>
+                                    <field name="location_short_name" string="Tên viết tắt"/>
+                                    <field name="location_address" string="Địa chỉ"/>
+                                    <field name="location_phone" string="Điện thoại"/>
+                                    <field name="location_email" string="Email"/>
+                                    <field name="location_is_headquarter" string="Trụ sở chính"/>
+                                </tree>
+                                <form string="Địa điểm công ty">
+                                    <group>
+                                        <field name="location_name"/>
+                                        <field name="location_is_headquarter"/>
+                                    </group>
+                                    <group>
+                                        <field name="location_country_id"/>
+                                        <field name="location_state_id"/>
+                                        <field name="location_district_id"/>
+                                        <field name="location_street_id"/>
+                                        <field name="location_address"/>
+                                        <field name="location_phone"/>
+                                        <field name="location_email"/>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+
+                        <!-- Tab Insurance -->
+                        <page string="BẢO HIỂM CÔNG TY">
+                            <!-- Bảng chiếm full width -->
+                            <field name="insurance_line_ids" nolabel="1" widget="one2many_list" colspan="2">
+                                <tree editable="bottom">
+                                    <field name="insurance_serial" string="Serial" width="120"/>
+                                    <field name="insurance_provider" string="Nhà cung cấp" width="150"/>
+                                    <field name="insurance_format" string="Định dạng" width="120"/>
+                                    <field name="insurance_start_date" string="Ngày bắt đầu" width="100"/>
+                                    <field name="insurance_end_date" string="Ngày kết thúc" width="100"/>
+                                </tree>
+                            </field>
+
+                            <!-- Phần Đơn vị -->
+                            <group string="ĐƠN VỊ" colspan="2">
+                                <group>
+                                    <field name="unit_code"/>
+                                    <field name="unit_representative_id"/>
+                                    <field name="unit_representative_position"/>
+                                </group>
+                                <group>
+                                    <field name="unit_province_id"/>
+                                    <field name="payment_method"/>
+                                    <field name="receive_result"/>
+                                </group>
+                            </group>
+
+                            <!-- Liên hệ & Ngân hàng -->
+                            <group>
+                                <group string="LIÊN HỆ">
+                                    <field name="contact_type"/>
+                                    <field name="contact_phone"/>
+                                    <field name="contact_email"/>
+                                </group>
+                                <group string="THÔNG TIN NGÂN HÀNG">
+                                    <field name="bank_name"/>
+                                    <field name="bank_branch"/>
+                                    <field name="bank_account"/>
+                                </group>
+                            </group>
+                        </page>
+
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

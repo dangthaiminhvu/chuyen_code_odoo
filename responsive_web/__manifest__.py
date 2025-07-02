@@ -39,7 +39,6 @@
         'web.assets_backend': [
             'responsive_web/static/src/css/main_menu.css',
             'responsive_web/static/src/css/sticky.css',
-            'responsive_web/static/src/js/appbar_control.js',
             'responsive_web/static/src/xml/WebMenu.xml',
             'responsive_web/static/src/xml/PivotCustom.xml',
             'responsive_web/static/src/js/WebMenu.js',
@@ -47,6 +46,7 @@
             'responsive_web/static/src/xml/ResponsiveWebTemplates.xml',
             'responsive_web/static/src/js/SearchResult.js',
             'responsive_web/static/src/js/ResponsiveWeb.js',
+            'responsive_web/static/src/js/ModuleStateManager.js',
         ]
     },
     'images': ['static/description/banner.jpg'],

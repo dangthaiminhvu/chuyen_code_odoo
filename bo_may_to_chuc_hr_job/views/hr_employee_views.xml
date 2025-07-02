@@ -1,0 +1,37 @@
+<odoo>
+    <data>
+
+        <!-- Tree View cho nhân viên -->
+        <record id="view_hr_employee_custom_tree" model="ir.ui.view">
+            <field name="name">hr.employee.tree.custom</field>
+            <field name="model">hr.employee</field>
+            <field name="arch" type="xml">
+                <tree string="Nhân viên">
+                    <field name="barcode" string="Mã nhân viên"/>
+                    <field name="name" string="Tên nhân viên"/>
+                    <field name="company_id"/>
+                    <field name="job_id" string="Chức vụ"/>
+                    <field name="department_custom_id" string="Bộ phận"/>
+                    <field name="parent_id" string="Quản lý"/>
+                    <field name="mobile_phone" string="Di động"/>
+                    <field name="work_email" string="Email công việc"/>
+                    <field name="seniority" string="Thâm niên"/>
+                    <field name="status" string="Trạng thái"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form View cho nhân viên -->
+        <record id="view_hr_employee_custom_form" model="ir.ui.view">
+            <field name="name">hr.employee.form.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='job_id']" position="after">
+                    <field name="seniority"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

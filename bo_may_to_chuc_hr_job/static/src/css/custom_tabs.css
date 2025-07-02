@@ -1,0 +1,5 @@
+.o_notebook .nav-tabs > li > a.active,
+.o_notebook .nav-tabs > li > a.o_notebook_tab_active {
+  color: #28a745 !important;
+  border-bottom: 3px solid #28a745 !important;
+}

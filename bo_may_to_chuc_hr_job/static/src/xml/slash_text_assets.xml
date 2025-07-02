@@ -2,8 +2,8 @@
   <!-- Đảm bảo DOM sẽ tải đúng script bundle của tiptap & extension trước khi widget chạy -->
   <template id="assets_backend" name="slash assets" inherit_id="web.assets_backend">
     <xpath expr="." position="inside">
-      <script type="text/javascript" src="/bo_may_to_chuc_hr_job_slash/static/lib/tiptap/dist/tiptap.umd.js"/>
-      <script type="text/javascript" src="/bo_may_to_chuc_hr_job_slash/static/lib/tiptap/dist/slash-menu.umd.js"/>
+      <script type="text/javascript" src="/bo_may_to_chuc_hr_job/static/lib/tiptap/dist/tiptap.umd.js"/>
+      <script type="text/javascript" src="/bo_may_to_chuc_hr_job/static/lib/tiptap/dist/slash-menu.umd.js"/>
     </xpath>
   </template>
 </odoo>

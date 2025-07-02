@@ -1,6 +1,6 @@
 /* Form view sticky header */
 .o_form_sheet_bg .o_form_statusbar{
-    position: sticky !important;
+    position: sticky ;
     top: 0;
     z-index: 2;
 }

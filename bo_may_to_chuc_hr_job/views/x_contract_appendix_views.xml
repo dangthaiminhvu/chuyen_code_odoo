@@ -1,0 +1,74 @@
+<odoo>
+    <data>
+
+        <!-- Tree view -->
+        <record id="view_tree_x_contract_appendix" model="ir.ui.view">
+            <field name="name">x.contract.appendix.tree</field>
+            <field name="model">x.contract.appendix</field>
+            <field name="arch" type="xml">
+                <tree string="Phụ lục hợp đồng">
+                    <field name="contract_id"/>
+                    <field name="employee_id"/>
+                    <field name="job_id"/>
+                    <field name="department_id"/>
+                    <field name="effective_date"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form view -->
+        <record id="view_form_x_contract_appendix" model="ir.ui.view">
+            <field name="name">x.contract.appendix.form</field>
+            <field name="model">x.contract.appendix</field>
+            <field name="arch" type="xml">
+                <form string="Phụ lục hợp đồng">
+                    <header>
+                        <button name="action_set_draft" type="object" string="Mới" modifiers='{"invisible": [["state", "not in", ["running", "canceled", "expired"]]]}'/>
+
+                        <button name="action_set_running" type="object" string="Đang chạy" modifiers='{"invisible": [["state", "not in", ["draft", "canceled", "expired"]]]}'/>
+
+                        <button name="action_set_expired" type="object" string="Hết hiệu lực" modifiers='{"invisible": [["state", "not in", ["running", "canceled", "draft"]]]}'/>
+
+                        <button name="action_set_canceled" type="object" string="Tạm hoãn HĐ" modifiers='{"invisible": [["state", "not in", ["running", "draft", "expired"]]]}'/>
+
+                        <field name="state" widget="statusbar" statusbar_visible="draft,running,canceled,expired"/>
+                    </header>
+
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="contract_id" required="1"/>
+                                <field name="employee_id" required="1"/>
+                                <field name="job_id" required="1"/>
+                                <field name="department_id" required="1"/>
+                                <field name="effective_date" required="1"/>
+                                <field name="attachment_ids" widget="many2many_binary"/>
+                            </group>
+
+                            <group string="Thu nhập">
+                                <field name="wage_basic"/>
+                                <field name="salary_type"/>
+                                <field name="wage"/>
+                                <field name="wage_kpi"/>
+                                <field name="wage_bhxh"/>
+                            </group>
+                        </group>
+
+                        <notebook>
+                            <page string="Thông tin phụ cấp">
+                                <field name="allowance_lines">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="amount"/>
+                                        <field name="unit"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

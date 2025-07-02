@@ -1,10 +1,11 @@
 /** @odoo-module **/
 import { registry } from "@web/core/registry";
 import { useService } from "@web/core/utils/hooks";
-import { Component, useRef, useState, onWillStart } from "@odoo/owl";
+import { Component, useRef, useState, onWillStart, onMounted} from "@odoo/owl";
 import SearchResult from './SearchResult';
 const { fuzzyLookup } = require('@web/core/utils/search');
 import { computeAppsAndMenuItems } from "@web/webclient/menus/menu_helpers";
+
 /**
  * WebResponsive Component
  *
@@ -38,6 +39,20 @@ class WebResponsive extends Component {
             this.state.should_replace_nav = true;
         });
         window.addEventListener('keydown', this.onKeyDown.bind(this));
+        onMounted(() => {
+        document.querySelectorAll(".dropdown-item.o_app.mt0").forEach((item) => {
+            const wrap = item.querySelector(".img-wrap");
+            if (!wrap) return;
+
+            item.addEventListener("mouseenter", () => {
+                wrap.classList.add("shimmer-active");
+            });
+
+            wrap.addEventListener("animationend", () => {
+                wrap.classList.remove("shimmer-active");
+            });
+        });
+    });
     }
     /**
      * Handles keydown events to trigger the search modal.
