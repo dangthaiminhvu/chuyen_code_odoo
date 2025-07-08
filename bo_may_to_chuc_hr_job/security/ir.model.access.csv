@@ -6,3 +6,5 @@ access_res_company_insurance_line,access.res.company.insurance.line,model_res_co
 access_res_company_location_line,res.company.location.line,model_res_company_location_line,,1,1,1,1
 access_contract_appendix_user,access.contract.appendix.user,model_x_contract_appendix,base.group_user,1,1,1,1
 access_contract_appendix_allowance_user,access.contract.appendix.allowance.user,model_x_contract_appendix_allowance,base.group_user,1,1,1,1
+access_hr_department_custom_user,access.hr.department.custom.user,model_hr_department_custom,base.group_user,1,1,1,1
+access_hr_position_assignment,access.hr.position.assignment.user,model_hr_position_assignment,base.group_user,1,1,1,1

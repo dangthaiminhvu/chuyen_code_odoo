@@ -1,0 +1,77 @@
+<odoo>
+    <record id="view_appoint_form" model="ir.ui.view">
+        <field name="name">lh.appoint.form</field>
+        <field name="model">lh.appoint</field>
+        <field name="arch" type="xml">
+            <form string="Bổ nhiệm / Miễn nhiệm" create="1" edit="1">
+                <header>
+                    <field name="transfer_status" widget="statusbar" options="{'clickable': true}" statusbar_visible="draft,done,cancel"/>
+
+                    <button name="action_done" string="Hoàn thành" type="object" class="btn-primary" x-options="{'invisible': 'record.transfer_status !== `draft`'}"/>
+
+                    <button name="action_cancel" string="Hủy" type="object" class="btn-secondary" x-options="{'invisible': 'record.transfer_status !== `draft`'}"/>
+                </header>
+
+
+
+                <sheet>
+                    <group>
+                        <group string="Thông tin nhân viên">
+                            <field name="employee_id" required="1"/>
+                            <field name="old_job_title" readonly="1"/>
+                            <field name="old_department_id" readonly="1"/>
+                            <field name="old_manager_id" required="1"/>
+                            <field name="old_manager_job" readonly="1"/>
+                        </group>
+
+                        <group string="Người phê duyệt">
+                            <field name="tp_hcns_id" required="1"/>
+                            <field name="director_id" required="1"/>
+                        </group>
+                    </group>
+
+                    <group string="Thông tin bổ nhiệm / miễn nhiệm">
+                        <group>
+                            <field name="decision_type" required="1"/>
+                            <field name="date_start" required="1"/>
+                            <field name="new_job_title" required="1"/>
+                            <field name="new_manager_id"/>
+                            <field name="new_manager_job" readonly="1"/>
+                        </group>
+                        <group string="Thông báo">
+                            <field name="notify_ids"/>
+                            <field name="notify_employee_id" x-options="{'invisible': '!record.show_notify_employee','required': 'record.show_notify_employee'}"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="reason" required="1"/>
+                        <field name="note"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_appoint_tree" model="ir.ui.view">
+        <field name="name">lh.appoint.tree</field>
+        <field name="model">lh.appoint</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="new_job_title"/>
+                <field name="transfer_status"/>
+                <field name="date_start"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_appoint" model="ir.actions.act_window">
+        <field name="name">Bổ nhiệm / Miễn nhiệm</field>
+        <field name="res_model">lh.appoint</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p>Tạo mới một quyết định bổ nhiệm hoặc miễn nhiệm cho nhân viên.</p>
+        </field>
+    </record>
+</odoo>

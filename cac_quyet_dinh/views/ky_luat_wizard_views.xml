@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_ky_luat_reject_wizard" model="ir.ui.view">
+        <field name="name">ky.luat.reject.wizard.form</field>
+        <field name="model">ky.luat.reject.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Lý do từ chối">
+                <group>
+                    <field name="reason"/>
+                </group>
+                <footer>
+                    <button name="action_submit_reject" string="Xác nhận" type="object" class="btn-primary"/>
+                    <button string="Hủy" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

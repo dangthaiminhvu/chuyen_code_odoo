@@ -60,13 +60,13 @@
                                 </group>
                             </page>
                             <page string="Mô tả công việc">
-                                <group>
+                                <group colspan="2">
                                     <field name="description" widget="slash_text" nolabel="1"/>
                                 </group>
                             </page>
 
                             <page string="Chế độ &amp; phúc lợi">
-                                <group>
+                                <group colspan="2">
                                     <field name="benefits" widget="slash_text" nolabel="1"/>
                                 </group>
                             </page>
@@ -107,7 +107,7 @@
 
         <!-- Action mở danh sách vai trò (custom departments) -->
         <record id="action_open_custom_roles_view" model="ir.actions.act_window">
-            <field name="name">Roles</field>
+            <field name="name">Vai trò</field>
             <field name="res_model">hr.department.custom</field>
             <field name="view_mode">tree,form</field>
         </record>

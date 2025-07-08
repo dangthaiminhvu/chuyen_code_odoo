@@ -1,0 +1,20 @@
+<odoo>
+    <data noupdate="1">
+        <record id="seq_lh_appoint" model="ir.sequence">
+            <field name="name">Quyết định Bổ nhiệm/Miễn nhiệm</field>
+            <field name="code">lh.appoint</field>
+            <field name="prefix">A/%(year)s/%(month)s/</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+        </record>
+
+        <record id="seq_suspend_end_contract" model="ir.sequence">
+            <field name="name">Quyết định Tạm hoãn/Chấm dứt HĐ</field>
+            <field name="code">cac.quyetdinh.suspendend</field>
+            <field name="prefix">RTL/%(year)s/%(month)s/</field>
+            <field name="padding">5</field>
+            <field name="number_increment">1</field>
+        </record>
+    </data>
+</odoo>

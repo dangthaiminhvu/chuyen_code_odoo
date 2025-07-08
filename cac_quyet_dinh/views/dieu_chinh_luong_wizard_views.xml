@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- WIZARD VIEW: Từ chối điều chỉnh lương -->
+    <record id="view_dcl_reject_wizard" model="ir.ui.view">
+        <field name="name">dcl.reject.wizard.form</field>
+        <field name="model">dcl.reject.wizard</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Lý do từ chối">
+                <group>
+                    <field name="reason_type"/>
+                    <field name="description"/>
+                </group>
+                <footer>
+                    <button name="action_submit_reject" string="Xác nhận" type="object" class="btn-primary"/>
+                    <button string="Hủy" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,65 @@
+<odoo>
+    <!-- Form chính -->
+    <record id="view_suspendend_form" model="ir.ui.view">
+        <field name="name">cac.quyetdinh.suspendend.form</field>
+        <field name="model">cac.quyetdinh.suspendend</field>
+        <field name="arch" type="xml">
+            <form string="Tạm hoãn/Chấm dứt HĐ">
+                <header>
+                    <button name="action_draft" type="object" string="Dự thảo" states="draft" class="btn-primary"/>
+                    <button name="action_done" type="object" string="Hoàn thành" states="draft" class="btn-success"/>
+                    <button name="action_cancel" type="object" string="Bị Từ chối" states="draft" class="btn-danger"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group string="Thông tin nhân viên">
+                            <field name="employee_id" options="{'no_create': True}"/>
+                            <field name="job_id"/>
+                            <field name="department_id"/>
+                            <field name="manager_id"/>
+                        </group>
+                        <group string="Người phê duyệt">
+                            <field name="approver_hcns_id"/>
+                            <field name="approver_director_id"/>
+                        </group>
+                    </group>
+                    <group string="Thông tin tạm hoãn/chấm dứt">
+                        <field name="decision_type"/>
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                        <field name="reason"/>
+                        <field name="note"/>
+                    </group>
+                    <notebook>
+                        <page string="Danh mục công việc">
+                            <field name="checklist_line_ids">
+                                <tree editable="bottom">
+                                    <field name="content"/>
+                                    <field name="recipient_id"/>
+                                    <field name="department_id"/>
+                                    <field name="job_id"/>
+                                    <field name="date_done"/>
+                                    <field name="state"/>
+                                    <field name="note"/>
+                                    <field name="is_employee"/>
+                                    <field name="is_responsible"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action & Menu -->
+    <record id="action_suspendend" model="ir.actions.act_window">
+        <field name="name">Tạm hoãn/Chấm dứt HĐ</field>
+        <field name="res_model">cac.quyetdinh.suspendend</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p>Quản lý tạm hoãn hoặc chấm dứt hợp đồng lao động.</p>
+        </field>
+    </record>
+</odoo>

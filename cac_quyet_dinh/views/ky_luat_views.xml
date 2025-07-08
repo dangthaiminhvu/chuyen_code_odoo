@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- FORM VIEW -->
+    <record id="view_ky_luat_form" model="ir.ui.view">
+        <field name="name">ky.luat.form</field>
+        <field name="model">ky.luat</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Kỷ luật" create="1" edit="1">
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,approved,cancelled,rejected" statusbar_colors="{'cancelled':'red','rejected':'red','approved':'green'}"/>
+                    <button name="action_confirm" string="Xác nhận" type="object" invisible="state != 'draft'"/>
+                    <button name="action_cancel" string="Hủy" type="object" invisible="state != 'draft'"/>
+                    <button name="action_back_to_draft" string="Quay về nháp" type="object" invisible="state != 'cancelled'"/>
+                    <button name="action_approve" string="Phê duyệt" type="object" invisible="state != 'confirmed'"/>
+                    <button name="action_reject" string="Từ chối" type="object" invisible="state != 'confirmed'"/>
+                </header>
+                <sheet>
+                    <!-- Tiêu đề lớn -->
+                    <group colspan="4">
+                        <h1>
+                            <field name="title" nolabel="1" placeholder="Tiêu đề kỷ luật" class="oe_inline"/>
+                        </h1>
+                    </group>
+
+                    <!-- Thông tin nhân viên & CBQL -->
+                    <group>
+                        <group string="THÔNG TIN NHÂN VIÊN &amp; NGƯỜI ĐỀ XUẤT">
+                            <field name="employee_id" required="1"/>
+                            <field name="employee_job" readonly="1"/>
+                            <field name="employee_department" readonly="1"/>
+                            <field name="manager_id" readonly="1"/>
+                            <field name="manager_department" readonly="1"/>
+                            <field name="manager_job" readonly="1"/>
+                        </group>
+                        <group string="Người đề xuất">
+                            <field name="proposer_id" required="1"/>
+                            <field name="proposer_department" readonly="1"/>
+                            <field name="proposer_job" readonly="1"/>
+                        </group>
+                    </group>
+
+                    <!-- Nội dung kỷ luật -->
+                    <group string="Nội dung kỷ luật" col="2">
+                        <group>
+                            <field name="discipline_type" required="1"/>
+                            <field name="organizing_committee"/>
+                            <field name="date_start"/>
+                            <field name="date_end"/>
+                            <field name="discipline_content"/>
+                            <field name="reject_reason" readonly="1" invisible="state != 'rejected'"/>
+                        </group>
+                        <group>
+                            <field name="decision_number"/>
+                            <field name="approver_id" readonly="1"/>
+                            <field name="approval_date" readonly="1"/>
+                        </group>
+                    </group>
+
+                    <!-- Notebook với 2 tab -->
+                    <notebook>
+                        <page string="Hình phạt">
+                            <field name="penalty_ids">
+                                <tree editable="bottom" options="{'no_ellipses': True}">
+                                    <field name="penalty_type"/>
+                                    <field name="penalty_method"/>
+                                    <field name="penalty_value"/>
+                                    <field name="penalty_state"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Tài liệu">
+                            <field name="attachment" widget="binary"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- TREE VIEW -->
+    <record id="view_ky_luat_tree" model="ir.ui.view">
+        <field name="name">ky.luat.tree</field>
+        <field name="model">ky.luat</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="title" string="Tên"/>
+                <field name="employee_id"/>
+                <field name="employee_job"/>
+                <field name="employee_department"/>
+                <field name="discipline_type" string="Kỷ luật"/>
+                <field name="date_start" string="Ngày kỷ luật"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ACTION -->
+    <record id="action_ky_luat" model="ir.actions.act_window">
+        <field name="name">Kỷ luật</field>
+        <field name="res_model">ky.luat</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Tạo kỷ luật mới
+            </p>
+        </field>
+    </record>
+</odoo>

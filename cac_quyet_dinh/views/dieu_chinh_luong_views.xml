@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- FORM VIEW -->
+    <record id="view_dieu_chinh_luong_form" model="ir.ui.view">
+        <field name="name">dieu.chinh.luong.form</field>
+        <field name="model">dieu.chinh.luong</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Điều chỉnh lương" create="1" edit="1">
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,waiting_hcns,done,rejected,cancelled" statusbar_colors="{'waiting_hcns':'blue','done':'green','rejected':'red','cancelled':'red'}"/>
+                    <button name="action_send_hcns" string="Gửi tới TP.HCNS" type="object" invisible="state != 'draft'"/>
+                    <button name="action_cancel" string="Hủy" type="object" invisible="state != 'draft'"/>
+                    <button name="action_approve" string="Phê duyệt" type="object" invisible="state != 'waiting_hcns'"/>
+                    <button name="action_reject" string="Từ chối" type="object" invisible="state != 'waiting_hcns'"/>
+                    <button name="action_back_to_draft" string="Trở về dự thảo" type="object" invisible="state != 'rejected'"/>
+                </header>
+                <sheet>
+                    <group colspan="2">
+                        <group>
+                            <!-- 1. Thông tin nhân viên -->
+                            <group string="Thông tin nhân viên">
+                                <field name="employee_id" required="1"/>
+                                <field name="job_title" readonly="1"/>
+                                <field name="department_id" readonly="1"/>
+                                <field name="manager_id" required="1"/>
+                                <field name="manager_job" readonly="1"/>
+                            </group>
+                        </group>
+
+                        <!-- 2. Thông tin phê duyệt -->
+                        <group string="Thông tin phê duyệt">
+                            <field name="tp_hcns_id"/>
+                            <field name="cfo_id"/>
+                            <field name="director_id"/>
+                        </group>
+                    </group>
+
+                    <!-- 3. Thông tin lương -->
+                    <group string="Thông tin lương">
+                        <group colspan="2">
+                            <group>
+                                <field name="adjust_type"/>
+                            </group>
+                            <group>
+                                <field name="date_start"/>
+                            </group>
+                        </group>
+                        <group colspan="2">
+                            <field name="reason"/>
+                        </group>
+                    </group>
+
+                    <!-- 4. Lương cũ và mới -->
+                    <group colspan="2">
+                        <group string="Thông tin lương cũ">
+                            <field name="old_salary_social" readonly="1"/>
+                            <field name="old_salary_type" readonly="1"/>
+                            <field name="old_salary_negotiated" readonly="1"/>
+                            <field name="old_salary_base" readonly="1"/>
+                            <field name="old_salary_kpi" readonly="1"/>
+                            <field name="old_salary_structure" readonly="1"/>
+                        </group>
+                        <group string="Thông tin lương mới">
+                            <field name="new_salary_social"/>
+                            <field name="new_salary_type"/>
+                            <field name="new_salary_negotiated"/>
+                            <field name="new_salary_base"/>
+                            <field name="new_salary_kpi"/>
+                            <field name="new_salary_structure"/>
+                        </group>
+                    </group>
+
+                    <!-- 5. Thông tin phụ cấp -->
+                    <notebook>
+                        <page string="Thông tin phụ cấp">
+                            <field name="allowance_ids">
+                                <tree editable="bottom" options="{'no_ellipses': True}">
+                                    <field name="allowance_type" width="200"/>
+                                    <field name="old_amount" readonly="1" width="100"/>
+                                    <field name="old_unit" readonly="1" width="100"/>
+                                    <field name="new_amount" width="100"/>
+                                    <field name="new_unit" width="100"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- TREE VIEW -->
+    <record id="view_dieu_chinh_luong_tree" model="ir.ui.view">
+        <field name="name">dieu.chinh.luong.tree</field>
+        <field name="model">dieu.chinh.luong</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="code" string="Tên"/>
+                <field name="adjust_type" string="Loại"/>
+                <field name="employee_id"/>
+                <field name="job_title"/>
+                <field name="department_id"/>
+                <field name="date_start" string="Ngày bắt đầu"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ACTION -->
+    <record id="action_dieu_chinh_luong" model="ir.actions.act_window">
+        <field name="name">Điều chỉnh lương</field>
+        <field name="res_model">dieu.chinh.luong</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

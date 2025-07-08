@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Root menu -->
+    <menuitem id="menu_cac_quyet_dinh_root" name="Các Quyết Định" sequence="10" web_icon="cac_quyet_dinh,static/description/icon.png"/>
+
+    <!-- Submenu: Khen thưởng -->
+    <menuitem id="menu_khen_thuong_root" name="Khen thưởng" parent="menu_cac_quyet_dinh_root" sequence="1" />
+
+    <!-- Dropdown các mục khác -->
+    <menuitem id="menu_cac_quyet_dinh_khen_thuong" name="Khen thưởng" parent="menu_khen_thuong_root" sequence="1" action="action_khen_thuong" />
+
+    <menuitem id="menu_cac_quyet_dinh_ky_luat" name="Kỷ luật" parent="menu_khen_thuong_root" sequence="2" action="action_ky_luat" />
+
+    <menuitem id="menu_cac_quyet_dinh_bonhiem_miennhiem" name="Bổ nhiệm / Miễn nhiệm" parent="menu_khen_thuong_root" sequence="3" action="action_appoint" />
+
+    <menuitem id="menu_cac_quyet_dinh_dieu_chinh_luong" name="Điều chỉnh lương" parent="menu_khen_thuong_root" sequence="4" action="action_dieu_chinh_luong" />
+
+    <menuitem id="menu_cac_quyet_dinh_dieu_chuyen" name="Điều chuyển công tác" parent="menu_khen_thuong_root" sequence="5" action="action_transfer_work" />
+
+    <menuitem id="menu_cac_quyet_dinh_tam_hoan" name="Tạm hoãn / Chấm dứt HĐ" parent="menu_khen_thuong_root" sequence="6" action="action_suspendend"/>
+
+    <menuitem id="menu_cac_quyet_dinh_tai_ky" name="Tái ký / Gia hạn HĐ" parent="menu_khen_thuong_root" sequence="7" />
+</odoo>
