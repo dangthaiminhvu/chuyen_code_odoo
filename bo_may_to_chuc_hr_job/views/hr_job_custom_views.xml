@@ -131,27 +131,23 @@
             </field>
         </record>
 
-        <menuitem id="menu_org_root" name="Bộ máy tổ chức" sequence="10" web_icon="bo_may_to_chuc_hr_job,static/description/icon.png"/>
+        <!-- Menu gốc -->
+        <menuitem id="menu_org_root" name="Bộ máy tổ chức" sequence="10" web_icon="bo_may_to_chuc_hr_job,static/description/icon.png" groups="bo_may_to_chuc_hr_job.group_hr_common_user"/>
 
-        <!--  Menu thông tin công ty  -->
-        <menuitem id="menu_org_info" name="Thông tin công ty" parent="menu_org_root" sequence="10"/>
-        <!--  Các lựa chọn dưới thông tin công ty (dropdown)  -->
-        <menuitem id="menu_org_company" name="Công ty" parent="menu_org_info" action="action_res_company_custom_view"/>
-        <menuitem id="menu_org_job" name="Chức vụ" parent="menu_org_info" action="action_hr_job_custom"/>
-        <menuitem id="menu_org_department" name="Phòng ban" parent="menu_org_info" action="action_department_view"/>
+        <!-- Menu thông tin công ty -->
+        <menuitem id="menu_org_info" name="Thông tin công ty" parent="menu_org_root" sequence="10" groups="bo_may_to_chuc_hr_job.group_hr_common_user"/>
+        <menuitem id="menu_org_company" name="Công ty" parent="menu_org_info" action="action_res_company_custom_view" groups="bo_may_to_chuc_hr_job.group_hr_common_user"/>
+        <menuitem id="menu_org_job" name="Chức vụ" parent="menu_org_info" action="action_hr_job_custom" groups="bo_may_to_chuc_hr_job.group_hr_common_user"/>
+        <menuitem id="menu_org_department" name="Phòng ban" parent="menu_org_info" action="action_department_view" groups="bo_may_to_chuc_hr_job.group_hr_common_user"/>
 
-        <!--  Các lựa chọn dưới Nhân viên & Vai trò (dropdown)  -->
-        <menuitem id="menu_org_info_2" name="Nhân viên &amp; Vai trò" parent="menu_org_root" sequence="10"/>
-        <!--  Các lựa chọn dưới Nhân viên & Vai trò (dropdown)  -->
-        <menuitem id="menu_org_employees" name="Nhân viên" parent="menu_org_info_2" action="action_open_hr_employees_list" sequence="10"/>
-        <menuitem id="menu_org_roles" name="Vai trò" parent="menu_org_info_2" action="action_open_custom_roles_view" sequence="20"/>
+        <!-- Menu nhân viên & vai trò -->
+        <menuitem id="menu_org_info_2" name="Nhân viên &amp; Vai trò" parent="menu_org_root" sequence="10" groups="bo_may_to_chuc_hr_job.group_hr_common_user"/>
+        <menuitem id="menu_org_employees" name="Nhân viên" parent="menu_org_info_2" action="action_open_hr_employees_list" sequence="10" groups="bo_may_to_chuc_hr_job.group_hr_common_user"/>
+        <menuitem id="menu_org_roles" name="Vai trò" parent="menu_org_info_2" action="action_open_custom_roles_view" sequence="20" groups="bo_may_to_chuc_hr_job.group_hr_common_user"/>
 
-        <!-- Menu Hợp đồng -->
-        <menuitem id="menu_hr_contract_custom_root" name="Hợp đồng" parent="menu_org_root" sequence="30"/>
-        <!-- Submenu: Hợp đồng -->
-        <menuitem id="menu_hr_contract_custom_main" name="Hợp đồng" parent="menu_hr_contract_custom_root" action="action_hr_contract_custom" sequence="10"/>
-        <!-- Submenu: Phụ lục hợp đồng -->
-        <menuitem id="menu_x_contract_appendix" name="Phụ lục hợp đồng" parent="menu_hr_contract_custom_root" action="action_x_contract_appendix" sequence="20"/>
-
+        <!-- Menu hợp đồng -->
+        <menuitem id="menu_hr_contract_custom_root" name="Hợp đồng" parent="menu_org_root" sequence="30" groups="bo_may_to_chuc_hr_job.group_hr_common_user"/>
+        <menuitem id="menu_hr_contract_custom_main" name="Hợp đồng" parent="menu_hr_contract_custom_root" action="action_hr_contract_custom" sequence="10" groups="bo_may_to_chuc_hr_job.group_hr_common_user"/>
+        <menuitem id="menu_x_contract_appendix" name="Phụ lục hợp đồng" parent="menu_hr_contract_custom_root" action="action_x_contract_appendix" sequence="20" groups="bo_may_to_chuc_hr_job.group_hr_common_user"/>
     </data>
 </odoo>

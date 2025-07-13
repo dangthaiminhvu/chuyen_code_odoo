@@ -23,7 +23,7 @@ class CacQuyetDinhSuspendEnd(models.Model):
         help="Chọn nhân viên áp dụng quyết định."
     )
     job_id = fields.Many2one(
-        'hr.job', 
+        'hr.job.custom', 
         string='Chức vụ', 
         related='employee_id.job_id',
         readonly=True
@@ -65,20 +65,37 @@ class CacQuyetDinhSuspendEnd(models.Model):
     note = fields.Text(string='Ghi chú')
 
     checklist_line_ids = fields.One2many(
-        'cac.quyetdinh.suspendend.checklist',
+        'suspend.end.checklist',
         'suspendend_id',
         string='Danh mục công việc'
     )
 
     state = fields.Selection([
-        ('draft','Dự thảo'),
-        ('done','Hoàn thành'),
-        ('cancel','Bị Từ chối')
+        ('draft', 'Dự thảo'),
+        ('done', 'Hoàn thành'),
+        ('cancel', 'Bị từ chối'),
     ], string='Trạng thái', default='draft', tracking=True)
 
-    @api.model
-    def create(self, vals):
-        if vals.get('name', _('New')) == _('New'):
-            seq = self.env['ir.sequence'].next_by_code('cac.quyetdinh.suspendend') or _('New')
-            vals['name'] = seq
-        return super().create(vals)
+    @api.depends('state')
+    def _compute_button_visibility(self):
+        for rec in self:
+            rec.show_button_draft = rec.state != 'draft'
+            rec.show_button_done = rec.state == 'draft'
+            rec.show_button_cancel = rec.state == 'draft'
+
+    show_button_draft = fields.Boolean(compute='_compute_button_visibility')
+    show_button_done = fields.Boolean(compute='_compute_button_visibility')
+    show_button_cancel = fields.Boolean(compute='_compute_button_visibility')
+
+    # ✅ Các action cần thiết
+    def action_draft(self):
+        for rec in self:
+            rec.state = 'draft'
+
+    def action_done(self):
+        for rec in self:
+            rec.state = 'done'
+
+    def action_cancel(self):
+        for rec in self:
+            rec.state = 'cancel'

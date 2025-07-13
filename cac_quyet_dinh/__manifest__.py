@@ -9,6 +9,8 @@
     'author': 'Ban Tu',
     'depends': ['base', 'hr', 'mail', 'hr_contract', 'bo_may_to_chuc_hr_job'],
     'data': [
+        'security/ir.model.access.csv',
+        'views/menu_views.xml',
         'data/sequence.xml',
         'views/khen_thuong_views.xml',
         'views/khen_thuong_wizard_views.xml',
@@ -18,10 +20,7 @@
         'views/dieu_chinh_luong_wizard_views.xml',
         'views/transfer_work_views.xml',
         'views/appoint_views.xml',
-        'views/menu_views.xml',
-        'security/cac_quyet_dinh_security.xml',
-        'security/ir.model.access.csv',
-
+        'views/suspend_end_views.xml',
     ],
     'installable': True,
     'application': True,

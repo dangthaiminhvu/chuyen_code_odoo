@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <!-- Nhóm Nhân viên dùng chung -->
+        <record id="group_hr_common_user" model="res.groups">
+            <field name="name" type="char">Nhân viên</field>
+            <field name="category_id" ref="base.module_category_human_resources"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+        <!-- Nhóm Quản lý dùng chung -->
+        <record id="group_hr_common_manager" model="res.groups">
+            <field name="name" type="char">Quản lý</field>
+            <field name="category_id" ref="base.module_category_human_resources"/>
+            <field name="implied_ids" eval="[(4, ref('bo_may_to_chuc_hr_job.group_hr_common_user'))]"/>
+        </record>
+
+    </data>
+</odoo>

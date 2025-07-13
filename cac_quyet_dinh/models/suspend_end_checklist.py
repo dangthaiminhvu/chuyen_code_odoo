@@ -21,3 +21,15 @@ class CacQuyetDinhSuspendEndChecklist(models.TransientModel):
         ('draft','Dự thảo'),
         ('done','Hoàn thành'),
     ], string='Trạng thái', default='draft')
+
+    def action_draft(self):
+        for rec in self:
+            rec.state = 'draft'
+
+    def action_done(self):
+        for rec in self:
+            rec.state = 'done'
+
+    def action_cancel(self):
+        for rec in self:
+            rec.state = 'cancel'

@@ -16,6 +16,7 @@
         ],
     },
     'data': [
+        'security/security.xml',
         'security/ir.model.access.csv',
         'views/hr_job_custom_views.xml',
         'views/res_company_location_line_popup.xml',

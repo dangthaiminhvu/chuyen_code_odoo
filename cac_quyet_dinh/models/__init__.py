@@ -10,3 +10,6 @@ from . import dcl_wizard
 from . import hr_contract
 from . import lh_transfer_work
 from . import lh_appoint
+from . import suspend_end_checklist
+from . import suspend_end_contract
+

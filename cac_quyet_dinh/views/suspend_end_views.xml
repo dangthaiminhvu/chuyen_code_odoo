@@ -1,14 +1,23 @@
 <odoo>
     <!-- Form chính -->
     <record id="view_suspendend_form" model="ir.ui.view">
-        <field name="name">cac.quyetdinh.suspendend.form</field>
-        <field name="model">cac.quyetdinh.suspendend</field>
+        <field name="name">suspend.end.contract.form</field>
+        <field name="model">suspend.end.contract</field>
         <field name="arch" type="xml">
             <form string="Tạm hoãn/Chấm dứt HĐ">
                 <header>
-                    <button name="action_draft" type="object" string="Dự thảo" states="draft" class="btn-primary"/>
-                    <button name="action_done" type="object" string="Hoàn thành" states="draft" class="btn-success"/>
-                    <button name="action_cancel" type="object" string="Bị Từ chối" states="draft" class="btn-danger"/>
+                    <!-- Các field ẩn để điều kiện hoạt động -->
+                    <field name="show_button_draft" invisible="1"/>
+                    <field name="show_button_done" invisible="1"/>
+                    <field name="show_button_cancel" invisible="1"/>
+
+                    <!-- Các nút dùng invisible trực tiếp -->
+                    <button name="action_draft" type="object" string="Dự thảo" class="btn-primary" invisible="not show_button_draft"/>
+
+                    <button name="action_done" type="object" string="Hoàn thành" class="btn-success" invisible="not show_button_done"/>
+
+                    <button name="action_cancel" type="object" string="Bị Từ chối" class="btn-danger" invisible="not show_button_cancel"/>
+
                     <field name="state" widget="statusbar"/>
                 </header>
                 <sheet>
@@ -56,7 +65,7 @@
     <!-- Action & Menu -->
     <record id="action_suspendend" model="ir.actions.act_window">
         <field name="name">Tạm hoãn/Chấm dứt HĐ</field>
-        <field name="res_model">cac.quyetdinh.suspendend</field>
+        <field name="res_model">suspend.end.contract</field>
         <field name="view_mode">tree,form</field>
         <field name="help" type="html">
             <p>Quản lý tạm hoãn hoặc chấm dứt hợp đồng lao động.</p>
