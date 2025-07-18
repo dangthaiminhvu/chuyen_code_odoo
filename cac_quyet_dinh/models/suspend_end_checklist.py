@@ -5,7 +5,7 @@ class CacQuyetDinhSuspendEndChecklist(models.TransientModel):
     _description = 'Checklist Tạm hoãn/Chấm dứt HĐ'
 
     suspendend_id = fields.Many2one(
-        'cac.quyetdinh.suspendend',
+        'suspend.end.checklist',
         string='Quyết định',
         ondelete='cascade'
     )

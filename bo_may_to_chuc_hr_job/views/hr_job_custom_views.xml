@@ -60,13 +60,13 @@
                                 </group>
                             </page>
                             <page string="Mô tả công việc">
-                                <group colspan="2">
+                                <group colspan="4">
                                     <field name="description" widget="slash_text" nolabel="1"/>
                                 </group>
                             </page>
 
                             <page string="Chế độ &amp; phúc lợi">
-                                <group colspan="2">
+                                <group colspan="4">
                                     <field name="benefits" widget="slash_text" nolabel="1"/>
                                 </group>
                             </page>

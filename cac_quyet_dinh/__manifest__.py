@@ -10,7 +10,6 @@
     'depends': ['base', 'hr', 'mail', 'hr_contract', 'bo_may_to_chuc_hr_job'],
     'data': [
         'security/ir.model.access.csv',
-        'views/menu_views.xml',
         'data/sequence.xml',
         'views/khen_thuong_views.xml',
         'views/khen_thuong_wizard_views.xml',
@@ -21,6 +20,9 @@
         'views/transfer_work_views.xml',
         'views/appoint_views.xml',
         'views/suspend_end_views.xml',
+        'views/transfer_views.xml',
+        'views/ly_do_nghi_viec_views.xml',
+        'views/menu_views.xml',
     ],
     'installable': True,
     'application': True,

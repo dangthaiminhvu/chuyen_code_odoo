@@ -1,0 +1,20 @@
+<odoo>
+    <data>
+        <!-- Root menu -->
+        <menuitem id="menu_cham_cong_root" name="Chấm công" sequence="20" web_icon="cham_cong,static/description/icon.png"/>
+        <!-- Import Data -->
+        <menuitem id="menu_import_data" name="Import data" parent="menu_cham_cong_root" action="action_import_data"/>
+        <!-- Fingerprint -->
+        <menuitem id="menu_mcc_finger" name="MCC vân tay" parent="menu_cham_cong_root"/>
+        <menuitem id="menu_machine_fp" name="Máy chấm công" parent="menu_mcc_finger" action="action_zk_machine"/>
+        <menuitem id="menu_attendance_data_fp" name="Dữ liệu chấm công" parent="menu_mcc_finger" action="action_log_attendance"/>
+        <!-- Face -->
+        <menuitem id="menu_mcc_face" name="MCC khuôn mặt" parent="menu_cham_cong_root"/>
+        <menuitem id="menu_machine_face" name="Danh sách MCC" parent="menu_mcc_face" action="action_faceai_machine"/>
+        <menuitem id="menu_mcc_employee" name="CBCNV trên MCC" parent="menu_mcc_face" action="action_mcc_employee"/>
+        <menuitem id="menu_attendance_data_face" name="Dữ liệu chấm công" parent="menu_mcc_face" action="action_log_attendance"/>
+        <!-- Settings -->
+        <menuitem id="menu_settings_root" name="Thiết lập" parent="menu_cham_cong_root"/>
+        <menuitem id="menu_work_time" name="Thời gian làm việc" parent="menu_settings_root" action="action_hr_work_time"/>
+    </data>
+</odoo>

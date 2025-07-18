@@ -8,11 +8,11 @@
     'license': 'LGPL-3',
     'depends': ['base', 'hr', 'hr_contract','mail'],
     'assets': {
-        'web.assets_backend': [
+            'web.assets_backend': [
             'bo_may_to_chuc_hr_job/static/lib/tiptap/tiptap.umd.js',
             'bo_may_to_chuc_hr_job/static/lib/tiptap/slash-menu.umd.js',
             'bo_may_to_chuc_hr_job/static/src/js/slash_text_widget.js',
-            'bo_may_to_chuc_hr_job/static/src/css/custom_tabs.css'
+            'bo_may_to_chuc_hr_job/static/src/css/custom_tabs.css',
         ],
     },
     'data': [

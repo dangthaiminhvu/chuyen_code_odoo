@@ -1,0 +1,20 @@
+{
+    'name': 'Chấm công',
+    'version': '1.0',
+    'category': 'Human Resources',
+    'summary': 'Quản lý chấm công, tích hợp máy chấm công',
+    'author': 'Đặng Thái Minh Vũ',
+    'depends': ['base', 'hr', 'bo_may_to_chuc_hr_job'],
+    'data': [
+        'security/ir.model.access.csv',
+        'views/import_data_view.xml',
+        'views/machine_fingerprint_views.xml',
+        'views/machine_face_views.xml',
+        'views/mcc_employee_views.xml',
+        'views/attendance_data_views.xml',
+        'views/work_time_views.xml',
+        'views/menu_views.xml',
+    ],
+    'installable': True,
+    'application': True,
+}

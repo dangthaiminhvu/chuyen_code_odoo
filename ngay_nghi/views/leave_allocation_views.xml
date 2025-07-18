@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <!-- 1. Action cho phân bổ ngày nghỉ -->
+        <record id="action_leave_allocation" model="ir.actions.act_window">
+            <field name="name">Phân bổ ngày nghỉ</field>
+            <field name="res_model">hr.leave.allocation</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Nhấn “Tạo” để phân bổ ngày nghỉ mới.
+                </p>
+            </field>
+        </record>
+
+        <!-- 2. Menu chính “Ngày nghỉ” (Nếu bạn đã có rồi thì bỏ phần này) -->
+        <menuitem id="menu_leave_root" name="Ngày nghỉ" sequence="10"/>
+
+        <!-- 3. Submenu “Phân bổ ngày nghỉ” -->
+        <menuitem id="menu_leave_allocation" name="Phân bổ ngày nghỉ" parent="menu_leave_root" action="action_leave_allocation" sequence="3"/>
+
+        <!-- Tree View -->
+        <record id="view_leave_allocation_tree" model="ir.ui.view">
+            <field name="name">hr.leave.allocation.tree</field>
+            <field name="model">hr.leave.allocation</field>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <tree string="Phân bổ ngày nghỉ">
+                    <field name="name"/>
+                    <field name="employee_id"/>
+                    <field name="leave_type"/>
+                    <field name="allocation_mode"/>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                    <field name="number_of_days"/>
+                    <field name="state" widget="statusbar"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form View -->
+        <record id="view_leave_allocation_form" model="ir.ui.view">
+            <field name="name">hr.leave.allocation.form</field>
+            <field name="model">hr.leave.allocation</field>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <form string="Phân bổ ngày nghỉ">
+                    <header>
+                        <button name="action_approve" string="Phê duyệt" type="object" class="btn-primary"/>
+                        <button name="action_refuse" string="Từ chối" type="object" class="btn-danger"/>
+                        <field name="state" widget="statusbar" colspan="2"/>
+                    </header>
+
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group col="2">
+                            <field name="leave_type"/>
+                            <field name="allocation_mode"/>
+                            <field name="employee_id"/>
+                            <group>
+                                <field name="date_from"/>
+                                <label for="date_to" string="→"/>
+                                <field name="date_to"/>
+                            </group>
+                            <field name="number_of_days"/>
+                        </group>
+                        <group>
+                            <field name="description"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button string="Hủy" class="btn-default" type="object" name="action_cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

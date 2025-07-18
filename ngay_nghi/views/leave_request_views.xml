@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_leave_request_tree" model="ir.ui.view">
+        <field name="name">leave.request.tree</field>
+        <field name="model">leave.request</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="leave_type_id"/>
+                <field name="employee_id"/>
+                <field name="date_from"/>
+                <field name="date_to"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_leave_request_form" model="ir.ui.view">
+        <field name="name">leave.request.form</field>
+        <field name="model">leave.request</field>
+        <field name="priority">16</field>
+        <field name="arch" type="xml">
+            <form string="Ngày nghỉ">
+                <sheet>
+                    <group string="THÔNG TIN NGÀY NGHỈ" colspan="2">
+                        <group>
+                            <field name="regime"/>
+                            <field name="leave_type_id"/>
+                            <field name="employee_id"/>
+                            <field name="half_day"/>
+
+                            <!-- Ngày: Hiển thị khi KHÔNG chọn nửa ngày -->
+                            <field name="date_from" modifiers="{'invisible': [('half_day','=',True)]}"/>
+                            <field name="date_to" modifiers="{'invisible': [('half_day','=',True)]}"/>
+
+                            <!-- Buổi: Hiển thị khi CÓ chọn nửa ngày -->
+                            <field name="half_day_type" modifiers="{'invisible': [('show_half_day_type','=',False)]}"/>
+                            <field name="reason"/>
+                        </group>
+                        <group>
+                            <field name="attachment" filename="attachment_filename"/>
+                        </group>
+                    </group>
+
+                    <group colspan="2">
+                        <group string="THÔNG BÁO">
+                            <field name="notify_target"/>
+
+                            <!-- Nếu chọn Nhân viên -->
+                            <field name="notify_employee" modifiers="{'invisible': [('show_notify_employee','=',False)]}"/>
+
+                            <!-- Nếu chọn Phòng ban -->
+                            <field name="notify_department" modifiers="{'invisible': [('show_notify_department','=',False)]}"/>
+                        </group>
+
+                        <group string="THÔNG TIN BÀN GIAO">
+                            <field name="handover_to"/>
+                            <field name="handover_date"/>
+                        </group>
+                    </group>
+                </sheet>
+
+                <footer>
+                    <button name="action_confirm" string="Xác nhận" type="object" class="btn-primary"/>
+                    <button name="action_cancel" string="Hủy" type="object" class="btn-secondary"/>
+                    <button name="action_approve" string="Phê duyệt" type="object" class="btn-success"/>
+                    <button name="action_refuse" string="Từ chối" type="object" class="btn-danger"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_leave_request" model="ir.actions.act_window">
+        <field name="name">Ngày nghỉ</field>
+        <field name="res_model">leave.request</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

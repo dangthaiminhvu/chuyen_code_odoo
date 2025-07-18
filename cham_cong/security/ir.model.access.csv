@@ -1,0 +1,17 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_zk_machine_user,zk.machine user,model_zk_machine,bo_may_to_chuc_hr_job.group_hr_common_user,1,0,0,0
+access_zk_machine_manager,zk.machine manager,model_zk_machine,bo_may_to_chuc_hr_job.group_hr_common_manager,1,1,1,1
+access_faceai_machine_user,faceai.machine user,model_faceai_machine,bo_may_to_chuc_hr_job.group_hr_common_user,1,0,0,0
+access_faceai_machine_manager,faceai.machine manager,model_faceai_machine,bo_may_to_chuc_hr_job.group_hr_common_manager,1,1,1,1
+access_mcc_employee_user,mcc.employee user,model_mcc_employee,bo_may_to_chuc_hr_job.group_hr_common_user,1,0,0,0
+access_mcc_employee_manager,mcc.employee manager,model_mcc_employee,bo_may_to_chuc_hr_job.group_hr_common_manager,1,1,1,1
+access_log_attendance_user,log.attendance user,model_log_attendance,bo_may_to_chuc_hr_job.group_hr_common_user,1,0,0,0
+access_log_attendance_manager,log.attendance manager,model_log_attendance,bo_may_to_chuc_hr_job.group_hr_common_manager,1,1,1,1
+access_hr_work_time_user,hr.work.time user,model_hr_work_time,bo_may_to_chuc_hr_job.group_hr_common_user,1,0,0,0
+access_hr_work_time_manager,hr.work.time manager,model_hr_work_time,bo_may_to_chuc_hr_job.group_hr_common_manager,1,1,1,1
+access_hr_work_time_line_user,hr.work.time.line user,model_hr_work_time_line,bo_may_to_chuc_hr_job.group_hr_common_user,1,0,0,0
+access_hr_work_time_line_manager,hr.work.time.line manager,model_hr_work_time_line,bo_may_to_chuc_hr_job.group_hr_common_manager,1,1,1,1
+access_h_hr_import_timesheet_user,h.hr.import.timesheet user,model_h_hr_import_timesheet,bo_may_to_chuc_hr_job.group_hr_common_user,1,0,0,0
+access_h_hr_import_timesheet_manager,h.hr.import.timesheet manager,model_h_hr_import_timesheet,bo_may_to_chuc_hr_job.group_hr_common_manager,1,1,1,1
+access_h_hr_import_timesheet_line_user,h.hr.import.timesheet.line user,model_h_hr_import_timesheet_line,bo_may_to_chuc_hr_job.group_hr_common_user,1,0,0,0
+access_h_hr_import_timesheet_line_manager,h.hr.import.timesheet.line manager,model_h_hr_import_timesheet_line,bo_may_to_chuc_hr_job.group_hr_common_manager,1,1,1,1

@@ -18,5 +18,14 @@ access_ky_luat_reject_wizard_user_group,ky.luat.reject.wizard.user.group,model_k
 access_bonhiem_miennhiem_user_group,lh.appoint.user.group,model_lh_appoint,bo_may_to_chuc_hr_job.group_hr_common_user,1,0,0,0
 access_dieu_chuyen_cong_tac_user_group,lh.transfer.work.user.group,model_lh_transfer_work,bo_may_to_chuc_hr_job.group_hr_common_user,1,0,0,0
 access_dieu_chinh_luong_user_group,dieu.chinh.luong.user.group,model_dieu_chinh_luong,bo_may_to_chuc_hr_job.group_hr_common_user,1,0,0,0
-access_suspend_end_admin,suspend.end.admin,model_suspend_end_contract,,1,1,1,1
-access_suspend_end_public,suspend.end.public,model_suspend_end_contract,,1,0,0,0
+access_suspend_end_admin,suspend.end.admin,model_suspend_end_contract,base.group_system,1,1,1,1
+access_suspend_end_public,suspend.end.public,model_suspend_end_contract,base.group_system,1,0,0,0
+access_transfer_manager,transfer.manager,model_cac_quyetdinh_renew_contract,bo_may_to_chuc_hr_job.group_hr_common_manager,1,1,1,1
+access_transfer_line_manager,transfer.line.manager,model_cac_quyetdinh_transfer_line,bo_may_to_chuc_hr_job.group_hr_common_manager,1,1,1,1
+access_transfer_user,transfer.user,model_cac_quyetdinh_renew_contract,bo_may_to_chuc_hr_job.group_hr_common_user,1,0,0,0
+access_transfer_line_user,transfer.line.user,model_cac_quyetdinh_transfer_line,bo_may_to_chuc_hr_job.group_hr_common_user,1,0,0,0
+access_challenge_manager,challenge.manager,model_cac_quyetdinh_challenge,bo_may_to_chuc_hr_job.group_hr_common_manager,1,1,1,1
+access_challenge_user,challenge.user,model_cac_quyetdinh_challenge,bo_may_to_chuc_hr_job.group_hr_common_user,1,0,0,0
+access_ly_do_nghi_viec_manager,ly.do.nghi.viec.manager,model_ly_do_nghi_viec,bo_may_to_chuc_hr_job.group_hr_common_manager,1,1,1,1
+access_ly_do_nghi_viec_user,ly.do.nghi.viec.user,model_ly_do_nghi_viec,bo_may_to_chuc_hr_job.group_hr_common_user,1,0,0,0
+access_ly_do_nghi_viec_admin,ly.do.nghi.viec.admin,model_ly_do_nghi_viec,base.group_system,1,1,1,1

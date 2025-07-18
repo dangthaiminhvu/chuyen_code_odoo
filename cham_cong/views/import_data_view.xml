@@ -1,0 +1,41 @@
+<odoo>
+    <record id="view_import_data_form" model="ir.ui.view">
+        <field name="model">h.hr.import.timesheet</field>
+        <field name="arch" type="xml">
+            <form string="Import Data">
+                <sheet>
+                    <group>
+                        <field name="name" required="1"/>
+                        <field name="data_file" filename="name" widget="binary" required="1"/>
+                        <field name="imported"/>
+                        <field name="user_id" readonly="1"/>
+                        <field name="import_date"/>
+                    </group>
+                    <notebook>
+                        <page string="Chi tiết thời gian biểu">
+                            <field name="line_ids" editable="bottom">
+                                <tree>
+                                    <field name="employee_code"/>
+                                    <field name="barcode"/>
+                                    <field name="check_in"/>
+                                    <field name="check_out"/>
+                                    <field name="type"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_import_data" model="ir.actions.act_window">
+        <field name="name">Import data</field>
+        <field name="res_model">h.hr.import.timesheet</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+        Click to import attendance data
+            </p>
+        </field>
+    </record>
+</odoo>

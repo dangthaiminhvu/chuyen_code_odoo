@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <!-- Action cho list/form Ngày nghỉ (leave.request) -->
+        <record id="action_leave_request" model="ir.actions.act_window">
+            <field name="name">Ngày nghỉ</field>
+            <field name="res_model">leave.request</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+          Nhấn vào “Tạo” để tạo yêu cầu nghỉ mới.
+                </p>
+            </field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+
+        <!-- Action cho list Tổng hợp nghỉ phép (leave.summary) -->
+        <record id="action_leave_summary" model="ir.actions.act_window">
+            <field name="name">Tổng hợp nghỉ phép</field>
+            <field name="res_model">leave.summary</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent">
+          Không có bản ghi nào. Bạn hãy đảm bảo đã chạy cron hoặc tạo data tổng hợp.
+                </p>
+            </field>
+        </record>
+
+        <!-- Tree view hoàn toàn mới cho leave.summary -->
+        <record id="view_leave_summary_tree_custom" model="ir.ui.view">
+            <field name="name">leave.summary.tree.custom</field>
+            <field name="model">leave.summary</field>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <tree string="Tổng hợp nghỉ phép" default_order="year desc">
+                    <field name="employee_id" string="Nhân viên"/>
+                    <field name="job_id" string="Chức vụ"/>
+                    <field name="department_id" string="Phòng ban"/>
+                    <field name="year" string="Năm"/>
+                    <field name="number_of_days_allocated" string="Số NP được phân bổ"/>
+                    <field name="previous_year_leaves" string="Số NP năm trước chuyển sang"/>
+                    <field name="increment_by_seniority" string="Số NP tăng theo thâm niên"/>
+                    <field name="used_leave_days" string="Số NP đã dùng"/>
+                    <field name="remaining_leave_days" string="Số NP còn lại"/>
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</odoo>

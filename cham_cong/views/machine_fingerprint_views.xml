@@ -1,0 +1,40 @@
+<odoo>
+    <record id="action_zk_machine" model="ir.actions.act_window">
+        <field name="name">Máy chấm công</field>
+        <field name="res_model">zk.machine</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="view_zk_machine_tree" model="ir.ui.view">
+        <field name="model">zk.machine</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="serial"/>
+                <field name="location"/>
+                <field name="port"/>
+                <field name="mcc_type"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_zk_machine_form" model="ir.ui.view">
+        <field name="model">zk.machine</field>
+        <field name="arch" type="xml">
+            <form string="Máy chấm công">
+                <sheet>
+                    <group>
+                        <field name="port" required="1"/>
+                        <field name="company_id" required="1"/>
+                        <field name="serial"/>
+                        <field name="location"/>
+                        <field name="mcc_type"/>
+                    </group>
+                    <header>
+                        <button name="test_connection" string="Thử kết nối" type="object"/>
+                        <button name="reboot_machine" string="Khởi động lại" type="object"/>
+                        <button name="create_account" string="Tạo tài khoản cho máy chấm công" type="object"/>
+                    </header>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

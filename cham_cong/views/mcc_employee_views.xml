@@ -1,0 +1,36 @@
+<odoo>
+    <record id="action_mcc_employee" model="ir.actions.act_window">
+        <field name="name">CBCNV trên MCC</field>
+        <field name="res_model">mcc.employee</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="view_mcc_employee_tree" model="ir.ui.view">
+        <field name="model">mcc.employee</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="user_type"/>
+                <field name="machine_id"/>
+                <field name="mcc_uid"/>
+                <field name="employee_id"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_mcc_employee_form" model="ir.ui.view">
+        <field name="model">mcc.employee</field>
+        <field name="arch" type="xml">
+            <form string="CBCNV trên MCC">
+                <sheet>
+                    <group>
+                        <field name="machine_id" required="1"/>
+                        <field name="user_type"/>
+                        <field name="employee_id"/>
+                        <field name="name" readonly="1"/>
+                        <field name="mcc_uid" readonly="1"/>
+                        <field name="image" widget="image"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

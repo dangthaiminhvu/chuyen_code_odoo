@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_leave_request_user,access.leave.request,model_leave_request,bo_may_to_chuc_hr_job.group_hr_common_user,1,0,1,0
+access_leave_request_manager,access.leave.request,model_leave_request,bo_may_to_chuc_hr_job.group_hr_common_manager,1,1,1,1
+access_leave_summary_user,access.leave.summary,model_leave_summary,bo_may_to_chuc_hr_job.group_hr_common_user,1,0,1,0
+access_leave_summary_manager,access.leave.summary,model_leave_summary,bo_may_to_chuc_hr_job.group_hr_common_manager,1,1,1,1
+access_hr_leave_allocation_user,access.hr.leave.allocation,model_hr_leave_allocation,bo_may_to_chuc_hr_job.group_hr_common_user,1,0,1,0
+access_hr_leave_allocation_manager,access.hr.leave.allocation,model_hr_leave_allocation,bo_may_to_chuc_hr_job.group_hr_common_manager,1,1,1,1
+access_hr_leave_type_manager,access.hr.leave.type,model_hr_leave_type,bo_may_to_chuc_hr_job.group_hr_common_manager,1,1,1,1
+access_hr_leave_type_user,access.hr.leave.type,model_hr_leave_type,bo_may_to_chuc_hr_job.group_hr_common_manager,1,0,1,0
+access_holiday_calendar_line_manager,access.holiday.calendar.line,model_holiday_calendar_line,bo_may_to_chuc_hr_job.group_hr_common_manager,1,1,1,1
+access_holiday_calendar_line_user,access.holiday.calendar.line,model_holiday_calendar_line,bo_may_to_chuc_hr_job.group_hr_common_manager,1,0,1,0

@@ -9,7 +9,7 @@ class KhenThuong(models.Model):
     _order = 'create_date desc'
 
     # Tiêu đề khen thưởng
-    title = fields.Char(String = "Tiêu đề khen thưởng")
+    title = fields.Char(string = "Tiêu đề khen thưởng")
     
     # Trạng thái
     state = fields.Selection([

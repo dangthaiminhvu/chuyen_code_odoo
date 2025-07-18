@@ -1,0 +1,18 @@
+<odoo>
+    <record id="view_ly_do_nghi_viec_tree" model="ir.ui.view">
+        <field name="name">ly.do.nghi.viec.tree</field>
+        <field name="model">ly.do.nghi.viec</field>
+        <field name="arch" type="xml">
+            <tree string="Lý do nghỉ việc" editable="bottom">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_ly_do_nghi_viec" model="ir.actions.act_window">
+        <field name="name">Thiết lập &amp; Hỗ trợ</field>
+        <field name="res_model">ly.do.nghi.viec</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_ly_do_nghi_viec_tree"/>
+    </record>
+</odoo>

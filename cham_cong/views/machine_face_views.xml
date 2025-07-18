@@ -1,0 +1,7 @@
+<odoo>
+    <record id="action_faceai_machine" model="ir.actions.act_window">
+        <field name="name">Máy chấm công khuôn mặt</field>
+        <field name="res_model">faceai.machine</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,50 @@
+<odoo>
+    <record id="action_hr_work_time" model="ir.actions.act_window">
+        <field name="name">Thời gian làm việc</field>
+        <field name="res_model">hr.work.time</field>
+        <field name="view_mode">form,tree</field>
+    </record>
+    <record id="view_hr_work_time_tree" model="ir.ui.view">
+        <field name="model">hr.work.time</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="company_id"/>
+                <field name="default_hours"/>
+                <field name="min_hours"/>
+                <field name="sat_days_per_month"/>
+                <field name="timezone"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_hr_work_time_form" model="ir.ui.view">
+        <field name="model">hr.work.time</field>
+        <field name="arch" type="xml">
+            <form string="Thời gian làm việc">
+                <sheet>
+                    <group>
+                        <field name="company_id"/>
+                        <field name="default_hours" readonly="1"/>
+                        <field name="min_hours"/>
+                        <field name="sat_days_per_month"/>
+                        <field name="timezone"/>
+                    </group>
+                    <notebook>
+                        <page string="Giờ làm việc">
+                            <field name="line_ids" editable="bottom">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="day_of_week"/>
+                                    <field name="time_period"/>
+                                    <field name="from_hour"/>
+                                    <field name="to_hour"/>
+                                    <field name="date_range"/>
+                                    <field name="work_type"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

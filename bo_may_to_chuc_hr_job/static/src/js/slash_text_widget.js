@@ -1,17 +1,13 @@
 /** @odoo-module **/
+
 import { registry } from '@web/core/registry';
 import { FieldText } from '@web/views/fields/field_text/field_text';
-const { Editor } = window.tiptap;                  // từ lib tiptap.umd.js
-const StarterKit = window.StarterKit;               // basic nodes & marks
-const SlashMenu = window.SlashMenu.default;         // extension
 
-/**
- * FieldSlashText: mở rộng FieldText, khởi tạo Tiptap với SlashMenu.
- */
+const { Editor } = window.tiptap;
+const StarterKit = window.StarterKit;
+const SlashMenu = window.SlashMenu.default;
+
 class FieldSlashText extends FieldText {
-    /**
-     * Thiết lập editor ngay khi widget dựng.
-     */
     mounted() {
         super.mounted();
         this._initEditor();
@@ -41,12 +37,9 @@ class FieldSlashText extends FieldText {
                                 { title: 'Trích dẫn',                command: () => this.editor.chain().focus().toggleBlockquote().run() },
                                 { title: 'Mã',                       command: () => this.editor.chain().focus().toggleCodeBlock().run() },
                             ];
-                            if (!query) {
-                                return list;
-                            }
-                            return list.filter(item =>
-                                item.title.toLowerCase().includes(query.toLowerCase())
-                            );
+                            return query
+                                ? list.filter(item => item.title.toLowerCase().includes(query.toLowerCase()))
+                                : list;
                         }
                     }
                 }),
@@ -59,5 +52,5 @@ class FieldSlashText extends FieldText {
     }
 }
 
-// Đăng ký widget mới với tên "slash_text"
+// ✅ Đăng ký sau khi khai báo xong class
 registry.category('fields').add('slash_text', FieldSlashText);

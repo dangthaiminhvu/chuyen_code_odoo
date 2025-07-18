@@ -1,0 +1,154 @@
+<odoo>
+    <record id="view_transfer_form" model="ir.ui.view">
+        <field name="name">cac.quyetdinh.renew.contract.form</field>
+        <field name="model">cac.quyetdinh.renew.contract</field>
+        <field name="arch" type="xml">
+            <form string="Quyết định chuyển công tác">
+                <header>
+                    <button name="action_send_to_manager" string="Gửi tới CBQL" type="object" class="btn-primary" modifiers="{'invisible': [('state','!=','draft')]}"/>
+                    <button name="action_reject" string="Từ chối" type="object" modifiers="{'invisible': [('state','not in', ['draft','to_manager'])]}"/>
+                    <button name="action_cancel" string="Hủy" type="object" modifiers="{'invisible': [('state','not in', ['draft','to_manager'])]}"/>
+                    <button name="action_done" string="Hoàn thành" type="object" modifiers="{'invisible': [('state','!=','to_manager')]}"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group string="THÔNG TIN NHÂN VIÊN">
+                            <field name="employee_id"/>
+                            <field name="job_id" readonly="1"/>
+                            <field name="department_id" readonly="1"/>
+                            <field name="manager_id"/>
+                            <field name="manager_job_id" readonly="1"/>
+                        </group>
+
+                        <group string="LƯƠNG MỚI">
+                            <field name="salary_type_new"/>
+                            <field name="new_wage"/>
+                            <field name="contract_info"/>
+                            <field name="structure_type_new"/>
+                            <field name="new_salary_month"/>
+                        </group>
+
+                        <group string="NGƯỜI PHÊ DUYỆT">
+                            <field name="approve_hrm_id"/>
+                            <field name="approve_ceo_id"/>
+                            <field name="responsible_id"/>
+                        </group>
+
+                        <group string="THÔNG TIN GIA HẠN">
+                            <field name="contract_type"/>
+                            <field name="new_contract_file"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <field name="total_score"/>
+                    </group>
+
+                    <group>
+                        <field name="general_evaluation"/>
+                        <field name="note"/>
+                    </group>
+
+                    <notebook>
+                        <page string="ĐÁNH GIÁ CHUNG">
+                            <field name="line_ids">
+                                <tree editable="bottom">
+                                    <field name="is_title" string="Is Title" width="7%"/>
+                                    <field name="is_subfolder" string="Is Subfolder" width="10%"/>
+                                    <field name="name" string="Tiêu chí đánh giá" width="20%"/>
+                                    <field name="max_score" string="Điểm tối đa" width="10%"/>
+                                    <field name="score" string="CBNV đánh giá" width="10%"/>
+                                    <field name="manager_score" string="Kết quả đánh giá của CBQL" width="18%"/>
+                                    <field name="description" string="Ghi chú" width="15%"/>
+                                    <field name="state" string="Trạng thái" width="8%"/>
+                                    <field name="is_employee" string="Is Employee" width="8%"/>
+                                    <field name="is_manager" string="Is Manager" width="8%"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <field name="is_title"/>
+                                        <field name="is_subfolder"/>
+                                        <field name="name"/>
+                                        <field name="max_score"/>
+                                        <field name="score"/>
+                                        <field name="manager_score"/>
+                                        <field name="description"/>
+                                        <field name="state"/>
+                                        <field name="is_employee"/>
+                                        <field name="is_manager"/>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                        <page string="Ý KIẾN">
+                            <group col="2" colspan="2">
+                                <group string="Ý KIẾN CỦA NHÂN VIÊN">
+                                    <field name="strengths_emp" string="Điểm mạnh"/>
+                                    <field name="weaknesses_emp" string="Điểm yếu"/>
+                                    <field name="employee_comment" string="Ý kiến của nhân viên"/>
+                                </group>
+                                <group string="Ý KIẾN CỦA QUẢN LÝ">
+                                    <field name="strengths_mgr" string="Điểm mạnh"/>
+                                    <field name="weaknesses_mgr" string="Điểm yếu"/>
+                                    <field name="manager_comment" string="Ý kiến của quản lý"/>
+                                </group>
+                            </group>
+                            <group string="ĐỀ XUẤT CỦA CBQL" col="4">
+                                <field name="manager_proposal" string="Đề xuất"/>
+                                <field name="official_contract" string="HĐ chính thức"/>
+                                <field name="confirmed_salary" string="Lương"/>
+                                <field name="start_date" string="Ngày bắt đầu"/>
+                                <field name="end_date" string="Ngày kết thúc"/>
+                            </group>
+                        </page>
+                        <page string="THỬ THÁCH">
+                            <field name="challenge_ids">
+                                <tree editable="bottom">
+                                    <field name="challenge_name"/>
+                                    <field name="total_score"/>
+                                    <field name="state"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="THÔNG TIN LƯƠNG">
+                            <group string="LƯƠNG CŨ">
+                                <field name="salary_type"/>
+                                <field name="old_wage"/>
+                                <field name="structure_type"/>
+                            </group>
+                            <group string="LƯƠNG MỚI">
+                                <field name="salary_type_new"/>
+                                <field name="new_wage"/>
+                                <field name="contract_info"/>
+                                <field name="structure_type_new"/>
+                            </group>
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_transfer_tree" model="ir.ui.view">
+        <field name="name">cac.quyetdinh.renew.contract.tree</field>
+        <field name="model">cac.quyetdinh.renew.contract</field>
+        <field name="arch" type="xml">
+            <tree string="Danh sách quyết định">
+                <field name="name"/>
+                <field name="contract_type"/>
+                <field name="employee_id"/>
+                <field name="job_id"/>
+                <field name="department_id"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_cac_quyetdinh_transfer" model="ir.actions.act_window">
+        <field name="name">Tái ký/ Gia hạn hợp đồng</field>
+        <field name="res_model">cac.quyetdinh.renew.contract</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>
